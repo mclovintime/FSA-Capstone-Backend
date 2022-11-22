@@ -1,7 +1,7 @@
 const express = require("express");
 const usersRouter = express.Router();
 const jwt = require("jsonwebtoken");
-const { getAllUsers, getUser, getUserByUsername } = require("../db/users");
+const { getAllUsers, getUser, getUserByUsername, createUser } = require("../db/users");
 
 usersRouter.use("/", (req, res, next) => {
   next();
@@ -17,9 +17,9 @@ usersRouter.get("/", async (req, res) => {
 
 // POST /api/users/login
 usersRouter.post("/login", async (req, res, next) => {
-    const { username, password } = req.body;
+    const { username, password, isAdmin } = req.body;
     try {
-      const user = await getUser({ username, password });
+      const user = await getUser({ username, password, isAdmin });
   
       if (user) {
         const token = jwt.sign(user, process.env.JWT_SECRET, {
@@ -44,7 +44,7 @@ usersRouter.post("/login", async (req, res, next) => {
 
 // POST /api/users/register
 usersRouter.post("/register", async (req, res, next) => {
-    const { username, password } = req.body;
+    const { username, password, isAdmin } = req.body;
     try {
       const user = await getUserByUsername(username);
   
@@ -65,6 +65,7 @@ usersRouter.post("/register", async (req, res, next) => {
         const newUser = await createUser({
           username,
           password,
+            isAdmin
         });
   
         const token = jwt.sign(newUser, process.env.JWT_SECRET, {
