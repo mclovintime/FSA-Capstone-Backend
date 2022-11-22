@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const apiRouter = express.Router();
 
 
 const jwt = require('jsonwebtoken');
@@ -8,7 +8,7 @@ const { JWT_SECRET } = process.env;
 
 
 
-router.use(async (req, res, next) => {
+apiRouter.use(async (req, res, next) => {
   const prefix = 'Bearer ';
   const auth = req.header('Authorization');
 
@@ -34,7 +34,7 @@ router.use(async (req, res, next) => {
   }
 });
 
-router.use((req, res, next) => {
+apiRouter.use((req, res, next) => {
     if (req.user) {
       console.log("User is set:", req.user);
     }
@@ -43,12 +43,12 @@ router.use((req, res, next) => {
   });
 
 const usersRouter = require('./users');
-router.use('/users', usersRouter);
+apiRouter.use('/users', usersRouter);
 
 const productsRouter = require('./products');
-router.use('/products', productsRouter);
+apiRouter.use('/products', productsRouter);
 
-router.get('*', (req, res, next) => {
+apiRouter.get('*', (req, res, next) => {
     res.status(404)
     res.send({
       message: "Not Found"
@@ -56,11 +56,11 @@ router.get('*', (req, res, next) => {
 
 })
 
-router.use((error, req, res, next) => {
+apiRouter.use((error, req, res, next) => {
     res.send({
       name: error.name,
       message: error.message
     });
   });
 
-module.exports = router;
+module.exports = apiRouter;
