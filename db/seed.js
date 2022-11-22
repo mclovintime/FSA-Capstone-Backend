@@ -7,10 +7,10 @@ async function createInitialUsers() {
     try {
       console.log("Starting to create users...");
   
-      const Tyler = await createUser({ username: 'Tyler', password: '123', isAdmin:"true"});
-      const Maaya = await createUser({ username: 'Maaya', password: '123', isAdmin:"true" });
-      const Thomas = await createUser({ username: 'Thomas', password: '123', isAdmin:"true" });
-      const Lucas = await createUser({ username: 'Lucas', password: '123', isAdmin:"true" });
+      const Tyler = await createUser({ username: 'Tyler', password: '123', is_admin:"true"});
+      const Maaya = await createUser({ username: 'Maaya', password: '123', is_admin:"true" });
+      const Thomas = await createUser({ username: 'Thomas', password: '123', is_admin:"true" });
+      const Lucas = await createUser({ username: 'Lucas', password: '123', is_admin:"true" });
       
   
       console.log(Tyler);
@@ -36,7 +36,7 @@ async function createInitialUsers() {
         {
           name: "Dimensional Sunglasses",
           description: "Enjoy the view",
-          inStock: "True",
+          stock: 4,
           image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669084186/image_l3bwyl.png",
           price: "$119.99"
         },
@@ -44,14 +44,14 @@ async function createInitialUsers() {
           name: "Super cool space car",
           description:
             "Fly in style",
-            inStock: "True",
+            stock: 5,
             image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669085856/sportscar_y6ctry.png",
             price: "$399.99"
         },
         {
           name: "Galactic Shower",
           description: "Find your moment of zen.",
-          inStock: "True",
+          stock: 6,
           image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
           price: "$299.99"
         },
@@ -100,7 +100,7 @@ async function createInitialUsers() {
           id SERIAL PRIMARY KEY,
           username varchar(255) UNIQUE NOT NULL,
           password varchar(255) NOT NULL,
-          isAdmin BOOLEAN DEFAULT false
+          is_admin BOOLEAN DEFAULT false
           
         );
       `);
@@ -110,7 +110,7 @@ async function createInitialUsers() {
         id SERIAL PRIMARY KEY,
         name varchar(255) NOT NULL,
         description TEXT NOT NULL,
-        inStock BOOLEAN DEFAULT true,
+        stock INTEGER,
         image_url TEXT NOT NULL,
         price varchar(255) NOT NULL
       );

@@ -17,9 +17,9 @@ usersRouter.get("/", async (req, res) => {
 
 // POST /api/users/login
 usersRouter.post("/login", async (req, res, next) => {
-    const { username, password, isAdmin } = req.body;
+    const { username, password} = req.body;
     try {
-      const user = await getUser({ username, password, isAdmin });
+      const user = await getUser({ username, password,  });
   
       if (user) {
         const token = jwt.sign(user, process.env.JWT_SECRET, {
@@ -44,7 +44,7 @@ usersRouter.post("/login", async (req, res, next) => {
 
 // POST /api/users/register
 usersRouter.post("/register", async (req, res, next) => {
-    const { username, password, isAdmin } = req.body;
+    const { username, password, is_admin } = req.body;
     try {
       const user = await getUserByUsername(username);
   
@@ -65,7 +65,7 @@ usersRouter.post("/register", async (req, res, next) => {
         const newUser = await createUser({
           username,
           password,
-            isAdmin
+            is_admin
         });
   
         const token = jwt.sign(newUser, process.env.JWT_SECRET, {
