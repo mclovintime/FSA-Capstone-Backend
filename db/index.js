@@ -69,13 +69,15 @@ async function createUser({
       async function createProduct({
         name,
         description,
-        inStock }) 
+        inStock, 
+        image_url,
+        price}) 
        {
            const {rows: [products]} = await client.query(`
-           INSERT INTO products(name, description, inStock)
-           VALUES($1, $2, $3)
+           INSERT INTO products(name, description, inStock, image_url, price)
+           VALUES($1, $2, $3, $4, $5)
            RETURNING *;
-           `, [name, description, inStock]);
+           `, [name, description, inStock, image_url, price]);
          
            return products
      }

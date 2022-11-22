@@ -25,26 +25,34 @@ async function createInitialUsers() {
     }
   }
 
+
+  
   async function createInitialProducts() {
     try {
       console.log("Starting to create products...");
   
       const productsToCreate = [
         {
-          name: "Dimensional Office Chair",
+          name: "Dimensional Sunglasses",
           description: "Enjoy the view",
-          inStock: "True"
+          inStock: "True",
+          image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669084186/image_l3bwyl.png",
+          price: "$119.99"
         },
         {
           name: "Super cool space car",
           description:
-            "We're going to disney universe",
-            inStock: "True"
+            "Fly in style",
+            inStock: "True",
+            image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669085856/sportscar_y6ctry.png",
+            price: "$399.99"
         },
         {
           name: "Galactic Shower",
-          description: "treat yoself",
-          inStock: "True"
+          description: "Find your moment of zen.",
+          inStock: "True",
+          image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
+          price: "$299.99"
         },
      
       ];
@@ -92,7 +100,7 @@ async function createInitialUsers() {
           username varchar(255) UNIQUE NOT NULL,
           password varchar(255) NOT NULL,
           isAdmin BOOLEAN DEFAULT false
-
+          
         );
       `);
   
@@ -101,7 +109,9 @@ async function createInitialUsers() {
         id SERIAL PRIMARY KEY,
         name varchar(255) NOT NULL,
         description TEXT NOT NULL,
-        inStock BOOLEAN DEFAULT true
+        inStock BOOLEAN DEFAULT true,
+        image_url TEXT NOT NULL,
+        price varchar(255) NOT NULL
       );
       `)
    
