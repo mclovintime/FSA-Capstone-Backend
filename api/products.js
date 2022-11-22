@@ -51,14 +51,7 @@ productsRouter.get('/', async (req, res, next) => {
   if (req.body) {
     try {
       const originalProduct = await getProductById(productId);
-      const originalProductName = await getProductByName(req.body.name);
-      if (originalProductName) {
-        next({
-          name: "Name duplicate",
-          message: `A product with name ${req.body.name} already exists`,
-          error: "error",
-        });
-      }
+  
 
       if (originalProduct) {
         const updatedProduct = await updateProduct({

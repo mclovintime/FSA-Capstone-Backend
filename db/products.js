@@ -40,15 +40,15 @@ async function getAllProducts() {
         async function createProduct({
           name,
           description,
-          inStock, 
+          stock, 
           image_url,
           price}) 
          {
              const {rows: [products]} = await client.query(`
-             INSERT INTO products(name, description, inStock, image_url, price)
+             INSERT INTO products(name, description, stock, image_url, price)
              VALUES($1, $2, $3, $4, $5)
              RETURNING *;
-             `, [name, description, inStock, image_url, price]);
+             `, [name, description, stock, image_url, price]);
            
              return products
        }
@@ -68,7 +68,7 @@ async function getAllProducts() {
   
        async function updateProduct({id, ...fields} ) {
           
-        const { name, description, inStock, image_url, price } = fields;
+        const { name, description, stock, image_url, price } = fields;
         
         
        
