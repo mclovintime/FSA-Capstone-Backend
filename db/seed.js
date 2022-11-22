@@ -1,5 +1,5 @@
-const {client, getAllUsers, createUser, createProduct, getAllProducts, getProductById} = require('./index')
-
+const {client, createProduct, getAllProducts, getProductById} = require('./index')
+const {getAllUsers, createUser} = require('./users')
 
 async function createInitialUsers() {
   
