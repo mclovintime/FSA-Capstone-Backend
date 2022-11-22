@@ -116,9 +116,25 @@ async function createInitialUsers() {
       );
       `)
    
-    
-  
-  
+      await client.query(`
+      CREATE TABLE cart (
+        id SERIAL PRIMARY KEY,
+        "userId" INTEGER REFERENCES users(id),
+        "isActive" BOOLEAN DEFAULT false,
+        "isComplete" BOOLEAN DEFAULT false,
+        "isSold" BOOLEAN DEFAULT false
+      )
+      `)
+      
+        await client.query(`
+        CREATE TABLE cart_items (
+          id SERIAL PRIMARY KEY,
+          "cartId" INTEGER REFERENCES cart(id),
+          "productId" INTEGER REFERENCES products(id),
+          price varchar(255) NOT NULL,
+          quantity varchar(255) NOT NULL
+        )
+        `)
   
       console.log("Finished building tables!");
     } catch (error) {
