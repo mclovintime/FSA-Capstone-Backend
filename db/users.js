@@ -34,7 +34,7 @@ async function createUser({ username, password, isAdmin }) {
   }
 }
 
-async function getUser({ username, password }) {
+async function getUser({ username, password, isAdmin }) {
   try {
     const user = await getUserByUsername(username);
     const hashedPassword = user.password;
