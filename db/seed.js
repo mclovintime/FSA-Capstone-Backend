@@ -121,8 +121,6 @@ async function createInitialUsers() {
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
         "isActive" BOOLEAN DEFAULT false,
-        "isComplete" BOOLEAN DEFAULT false,
-        "isSold" BOOLEAN DEFAULT false
       )
       `)
       
