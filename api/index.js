@@ -48,19 +48,24 @@ apiRouter.use('/users', usersRouter);
 const productsRouter = require('./products');
 apiRouter.use('/products', productsRouter);
 
+const cartRouter = require('./cart')
+apiRouter.use('/cart', cartRouter)
+
+const cartItemsRouter = require('./cart_items')
+apiRouter.use('/cart_items', cartItemsRouter)
+
 apiRouter.get('*', (req, res, next) => {
-    res.status(404)
-    res.send({
-      message: "Not Found"
-    })
+  res.status(404)
+  res.send({
+    message: "Not Found"
+  })
 
 })
 
 apiRouter.use((error, req, res, next) => {
-    res.send({
-      name: error.name,
-      message: error.message
-    });
+  res.send({
+    name: error.name,
+    message: error.message
   });
-
+});
 module.exports = apiRouter;
