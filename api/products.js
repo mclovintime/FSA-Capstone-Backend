@@ -7,9 +7,7 @@ productsRouter.get('/', async (req, res, next) => {
     try {
       const products = await getAllProducts();
   
-     
-      
-  
+    
       res.send({
         products
       });
@@ -42,6 +40,22 @@ productsRouter.get('/', async (req, res, next) => {
       next({ name, message });
     }
   });
+
+  productsRouter.get("/:productId", async (req, res, next) =>  {
+    const {productId} = req.params
+
+    try {
+      const products = await getProductById(productId); 
+      console.log(products, "is products from prod api")
+    
+      res.send({
+        products
+      });
+    } catch ({ name, message }) {
+      next({ name, message });
+    }
+
+  })
 
   
   productsRouter.patch("/:productId", requireAdmin, async (req, res, next) => {
