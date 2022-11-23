@@ -83,6 +83,23 @@ usersRouter.post("/register", async (req, res, next) => {
     }
   });
 
+  usersRouter.get("/me", async (req, res, next) => {
+    try {
+      if (req.user) {
+        res.send(req.user);
+      } else {
+        next({
+          error: "Unauthorized",
+          name: "Invalid credentials",
+          message: "You must be logged in to perform this action",
+        });
+      }
+    } catch (err) {
+      console.log(err.message);
+      next();
+    }
+  });
+
 
 
 module.exports = usersRouter;
