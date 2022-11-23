@@ -1,44 +1,43 @@
 const client = require("./client");
 
 async function getAllCarts() {
-    const { rows } = await client.query(
-      `SELECT *
-      FROM cart;`
-    )
-  
-    return rows;
-  }
+  const { rows } = await client.query(
+    `SELECT *
+    FROM cart;`
+  )
+
+  return rows;
+}
 
 async function getCartById(cartId) {
-    try {
-      const { rows: [cart] } = await client.query(`
-        SELECT *
-        FROM cart
-        WHERE id=$1;
-      `, [cartId])
+  try {
+    const { rows: [cart] } = await client.query(`
+      SELECT *
+      FROM cart
+      WHERE id=$1;
+    `, [cartId])
 
-      if(!cart) {
-        throw {
-            name: "CartNotFoundError",
-            message: "Could not find the cart with that ID"
-        };
-      } return cart;
-    } catch (error) {
-      console.error(error);
-    }
+    if(!cart) {
+      throw {
+          name: "CartNotFoundError",
+          message: "Could not find the cart with that ID"
+      };
+    } return cart;
+  } catch (error) {
+    console.error(error);
   }
+}
+
 
   async function createCart({
     userId,
-    isActive,
-    isComplete, 
-    isSold}) 
+    isActive,}) 
    {
        const {rows: [cart]} = await client.query(`
-       INSERT INTO cart(userId, isActive, isComplete, isSold)
-       VALUES($1, $2, $3, $4)
+       INSERT INTO cart("userId", "isActive")
+       VALUES($1, $2)
        RETURNING *;
-       `, [userId, isActive, isComplete, isSold]);
+       `, [userId, isActive]);
      
        return cart
  }
@@ -57,13 +56,8 @@ async function getCartById(cartId) {
     }
   }
 
-// async function addProductsToCart() {
-//   try {
-    
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+
+
 
 module.exports = {
     getAllCarts,

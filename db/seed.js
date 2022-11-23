@@ -1,5 +1,7 @@
-const {createProduct, getAllProducts, getProductById, getAllUsers, createUser} = require('./index')
+const {createProduct, getAllProducts, getProductById, getAllUsers, createUser, } = require('./index')
 const client = require('./client');
+const { createCart, getAllCarts } = require('./cart');
+const { getAllCartItems, addProductToCartItems } = require('./cart_items');
 
 
 async function createInitialUsers() {
@@ -38,7 +40,7 @@ async function createInitialUsers() {
           description: "Enjoy the view",
           stock: 4,
           image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669084186/image_l3bwyl.png",
-          price: "$119.99"
+          price: 11999
         },
         {
           name: "Super cool space car",
@@ -46,14 +48,14 @@ async function createInitialUsers() {
             "Fly in style",
             stock: 5,
             image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669085856/sportscar_y6ctry.png",
-            price: "$399.99"
+            price: 39999
         },
         {
           name: "Galactic Shower",
           description: "Find your moment of zen.",
           stock: 6,
           image_url: "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
-          price: "$299.99"
+          price: 29999
         },
      
       ];
@@ -71,6 +73,91 @@ async function createInitialUsers() {
     }
   }
 
+  async function createInitialCarts() {
+    console.log("starting to create cart...");
+  
+    const cartsToCreate = [
+      {
+        userId: 1,
+        isActive: true,
+        
+      },
+      {
+        userId: 2,
+        isActive: true,
+       
+      },
+      {
+        userId: 3,
+        isActive: true,
+       
+      },
+      {
+        userId: 4,
+        isActive: true,
+        
+      },
+    ];
+    
+    const carts = await Promise.all(
+      cartsToCreate.map((cart) => createCart(cart))
+    );
+  
+    console.log("Carts Created: ", carts);
+    console.log("Finished creating carts.");
+  }
+
+  async function createInitialCartItems() {
+    console.log("starting to create cart items...");
+  
+    const cartItemsToCreate = [
+      {
+        cartId: 1,
+        productId: 1,
+        price: 11999,
+        quantity: 1
+        
+      },
+
+      {
+        cartId: 1,
+        productId: 2,
+        price: 39999,
+        quantity: 1
+
+      },
+      {
+        cartId: 2,
+        productId: 2,
+        price: 39999,
+        quantity:1
+       
+      },
+      {
+        cartId: 3,
+        productId: 3,
+        price:29999,
+        quantity:1
+       
+      },
+      {
+        cartId: 4,
+        productId: 3,
+        price: 29999,
+        quantity:1
+        
+      },
+    ];
+    
+    const cartItems = await Promise.all(
+      cartItemsToCreate.map((cartItem) => addProductToCartItems(cartItem))
+    );
+  
+    console.log("Carts Created: ", cartItems);
+    console.log("Finished creating carts.");
+  }
+  
+  
 
 
   async function dropTables() {
@@ -79,8 +166,10 @@ async function createInitialUsers() {
   
       await client.query(`
         
+      DROP TABLE IF EXISTS cart_items;
+      DROP TABLE IF EXISTS cart;
+      DROP TABLE IF EXISTS products;
         DROP TABLE IF EXISTS users;
-        DROP TABLE IF EXISTS products;
       `);
   
       console.log("Finished dropping tables!");
@@ -104,7 +193,7 @@ async function createInitialUsers() {
           
         );
       `);
-  
+  //USE PENNIES FOR PRICE
       await client.query(`
       CREATE TABLE products (
         id SERIAL PRIMARY KEY,
@@ -112,7 +201,7 @@ async function createInitialUsers() {
         description TEXT NOT NULL,
         stock INTEGER,
         image_url TEXT NOT NULL,
-        price varchar(255) NOT NULL
+        price INTEGER
       );
       `)
    
@@ -120,20 +209,19 @@ async function createInitialUsers() {
       CREATE TABLE cart (
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
-        "isActive" BOOLEAN DEFAULT false,
-        "isComplete" BOOLEAN DEFAULT false,
-        "isSold" BOOLEAN DEFAULT false
-      )
+        "isActive" BOOLEAN DEFAULT false
+      );
       `)
       
+      //USE PENNIES FOR PRICE
         await client.query(`
         CREATE TABLE cart_items (
           id SERIAL PRIMARY KEY,
           "cartId" INTEGER REFERENCES cart(id),
           "productId" INTEGER REFERENCES products(id),
-          price varchar(255) NOT NULL,
+          price INTEGER, 
           quantity varchar(255) NOT NULL
-        )
+        );
         `)
   
       console.log("Finished building tables!");
@@ -142,6 +230,8 @@ async function createInitialUsers() {
       throw error;
     }
   }
+
+
   
 
   async function rebuildDB() {
@@ -152,7 +242,8 @@ async function createInitialUsers() {
       await createTables();
       await createInitialUsers();
       await createInitialProducts();
-      
+      await createInitialCarts();
+      await createInitialCartItems();
     } catch (error) {
       console.log("error during rebuildDB")
       throw error;
@@ -171,7 +262,14 @@ async function createInitialUsers() {
       console.log("Calling getAllProducts")
       const products = await getAllProducts();
       console.log("Result:", products)
-  
+
+      console.log("Calling getAllCarts")
+      const carts = await getAllCarts();
+      console.log ("Result:", carts)
+
+      console.log("Calling getAllCartItems")
+      const cartItems = await getAllCartItems();
+      console.log("Result:", cartItems)
   
       console.log("Finished database tests!");
     } catch (error) {
