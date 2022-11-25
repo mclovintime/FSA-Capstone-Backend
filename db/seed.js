@@ -8,6 +8,8 @@ const {
   getAllCarts,
   getAllCartItems,
   addProductToCartItems,
+  getCartByUser,
+  getCartItemsByCart
 } = require("./index");
 const client = require("./client");
 
@@ -130,7 +132,12 @@ async function createInitialCartItems() {
       price: 11999,
       quantity: 1,
     },
-
+    {
+        cartId: 1,
+        productId: 3,
+        price: 29999,
+        quantity: 1,
+      },
     {
       cartId: 1,
       productId: 2,
@@ -208,7 +215,7 @@ async function createTables() {
         price INTEGER
       );
       `);
-
+//should default be true?
     await client.query(`
       CREATE TABLE cart (
         id SERIAL PRIMARY KEY,
@@ -245,6 +252,10 @@ async function rebuildDB() {
     await createInitialProducts();
     await createInitialCarts();
     await createInitialCartItems();
+    await getCartByUser(1);
+    console.log("Testing Get Cart Items by Cart")
+    await getCartItemsByCart(1);
+  
   } catch (error) {
     console.log("error during rebuildDB");
     throw error;
@@ -270,6 +281,15 @@ async function testDB() {
     console.log("Calling getAllCartItems");
     const cartItems = await getAllCartItems();
     console.log("Result:", cartItems);
+
+    console.log("testing getCartByUser")
+    const userCartTest = await getCartByUser(1);;
+    console.log("Result", userCartTest)
+
+    console.log("testing getCartItemsByCart")
+    const getTest = await getCartItemsByCart(1);
+    console.log("Result", getTest)
+  
 
     console.log("Finished database tests!");
   } catch (error) {

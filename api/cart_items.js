@@ -1,7 +1,7 @@
 const express = require('express');
 
 const cartItemsRouter = express.Router();
-const {getAllCartItems, getCartItemById, addProductToCartItems, destroyCartItem, updateCartItem, getCartById } = require("../db/")
+const {getAllCartItems, getCartItemsByCart, getCartItemById, addProductToCartItems, destroyCartItem, updateCartItem, getCartById, getCartByUser } = require("../db/")
 
 
 cartItemsRouter.get("/", async (req, res, next) => {
@@ -11,6 +11,20 @@ cartItemsRouter.get("/", async (req, res, next) => {
       if (!cartItems) {
         res.send(cartItems);
       }
+    } catch ({ name, message }) {
+      next({ name, message });
+    }
+  });
+
+  cartItemsRouter.get("/:cartId/cart_items", async (req, res, next) => {
+    try {
+        const cartId = req.params
+        const userId = req.user.id
+      const userCart = await getCartByUser(userId);  
+      console.log(userCart, "this is userCart in API")
+      const cartItems = await getCartItemsByCart(cartId);
+  
+    res.send(cartItems)
     } catch ({ name, message }) {
       next({ name, message });
     }
