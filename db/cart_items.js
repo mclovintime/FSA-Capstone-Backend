@@ -1,4 +1,5 @@
 const client = require("./client");
+const { getUserById } = require("./users");
 
 async function getCartItemById(id) {
   const {
@@ -18,11 +19,31 @@ async function getCartItemById(id) {
   }
 }
 
-async function getCartItemsByCart({id}) {
+async function getCartItemsByUserId({ userId}) {
+    const {id} = await getUserById(userId)
+    
+    const cartIds = await client.query(`
+    SELECT cart.*
+    FROM cart
+    JOIN users ON cart."userId"=users.id
+    WHERE "userId" = $1;
+    `, [id])
+ 
+   
+
+    const userCartItems = await Promise.all(cartIds.map(
+        cart => getCartItemsByCart( cart.id)
+      ));
+      console.log(userCartItems, "LINE 37, getCartItemsByUserId")
+      return userCartItems
+  }
+
+
+async function getCartItemsByCart(id) {
     const {rows:cartItems} = await client.query(`
-    SELECT cart_items.*
+    SELECT *
     FROM cart_items
-    WHERE "cartId"= $1 
+    WHERE "cartId"= $1;
     `, [id])
   
     
@@ -30,6 +51,24 @@ async function getCartItemsByCart({id}) {
     
   }
 
+
+  async function getCartByUser(id) {
+    try {
+      const { rows: cartIds } = await client.query(`
+      SELECT id 
+      FROM cart 
+      WHERE "userId"=$1;
+      `, [id]);
+      
+     
+      const carts = await Promise.all(cartIds.map(
+        cart => getCartById( cart.id )
+      ));
+  console.log(carts, "THIS IS GET CART BY USER")
+    } catch (error) {
+      throw error;
+    }
+  }
 
 async function addProductToCartItems({ productId, cartId, price, quantity }) {
   try {
@@ -111,5 +150,6 @@ module.exports = {
   destroyCartItem,
   getCartItemById,
   updateCartItem,
-  getCartItemsByCart
+  getCartItemsByCart,
+  getCartItemsByUserId
 };

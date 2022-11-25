@@ -1,7 +1,9 @@
 const express = require("express");
 const usersRouter = express.Router();
 const jwt = require("jsonwebtoken");
-const { getAllUsers, getUser, getUserByUsername, createUser } = require("../db/users");
+const { getCartByUser, getCartItemsByCart,getCartById,addProductToCartItems } = require("../db");
+const { getAllUsers, getUser, getUserByUsername, createUser,} = require("../db/users");
+const { requireUser } = require("./utils");
 
 usersRouter.use("/", (req, res, next) => {
   next();
@@ -100,6 +102,68 @@ usersRouter.post("/register", async (req, res, next) => {
     }
   });
 
+  usersRouter.get('/mycart', requireUser, async (req, res, next) => {
+    const  userId  = req.user.id;
+   console.log(req.user.id, "REQ,USER ID")
+    try {
+        const userCart = await getCartByUser(userId)
+        console.log(userCart, "USER CART")
+        if (req.user){
+        res.send(
+            userCart,
+        )}
+    } catch ({ name, message }) {
+        next ({ name, message })
+    }
+  })
 
+
+  usersRouter.get('/mycart/cart_items', requireUser, async (req, res, next) => {
+    const  userId  = req.user.id;
+  
+    try {
+        
+        
+        const cartItemsList = (
+          await getCartItemsByCart(userId)
+        ).map((cartItem) => cartItem);
+       
+       console.log(cartItemsList, "A LIST OF CART ITEMS MILORD")
+  
+        if (req.user){
+        res.send(
+            cartItemsList,
+        )}
+    } catch ({ name, message }) {
+        next ({ name, message })
+    }
+  })
+
+  usersRouter.post("/mycart/cart_items", requireUser,
+  
+    async (req, res, next) => {
+    try {
+        const cartId = req.user.id;
+      const originalCart = await getCartById(cartId);
+        
+      if (originalCart) {
+         {
+            console.log(req.body, "REQ.BODY");
+            
+          const { productId, price, quantity } = req.body;
+
+
+        const updatedCartItems = await addProductToCartItems({
+            productId, cartId, price, quantity
+            });
+  
+            res.send(updatedCartItems);
+          }
+        } 
+    } catch (error) {
+    console.log(error)
+    }
+    }
+  );
 
 module.exports = usersRouter;

@@ -64,9 +64,28 @@ async function destroyCart(id) {
   }
 }
 
+async function getCartByUser(userId) {
+  try {
+    const { rows: cartIds } = await client.query(`
+    SELECT id 
+    FROM cart 
+    WHERE "userId"=${userId};
+    `, );
+    
+   
+    const carts = await Promise.all(cartIds.map(
+      cart => getCartById( cart.id )
+    ));
+return carts
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   getAllCarts,
   getCartById,
   createCart,
   destroyCart,
+  getCartByUser
 };
