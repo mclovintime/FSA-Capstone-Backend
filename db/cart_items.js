@@ -91,24 +91,25 @@ async function addProductToCartItems({ productId, cartId, price, quantity }) {
 }
 
 async function getAllCartItems() {
-  const { rows } = await client.query(
+  const { rows:[cartItem] } = await client.query(
     `SELECT *
       FROM cart_items;`
   );
 
-  return rows;
+  return cartItem;
 }
 
-async function destroyCartItem(id) {
+async function destroyCartItem(cartItemId) {
   try {
-    const {
-      rows: [cartItem],
-    } = await client.query(`
-      DELETE FROM cart_items
-      WHERE id = ${id}
+    const 
+      {rows}
+     = await client.query(`
+      DELETE 
+      FROM cart_items
+      WHERE id = ${cartItemId}
       RETURNING *;
     `);
-    return cartItem;
+    return rows;
   } catch (error) {
     console.error(error);
   }

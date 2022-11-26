@@ -1,7 +1,7 @@
 const express = require("express");
 const usersRouter = express.Router();
 const jwt = require("jsonwebtoken");
-const { getCartByUser, getCartItemsByCart,getCartById,addProductToCartItems } = require("../db");
+const { getCartByUser, getCartItemsByCart,getCartById,addProductToCartItems, getCartItemById, destroyCartItem } = require("../db");
 const { getAllUsers, getUser, getUserByUsername, createUser,} = require("../db/users");
 const { requireUser } = require("./utils");
 
@@ -165,5 +165,17 @@ usersRouter.post("/register", async (req, res, next) => {
     }
     }
   );
+
+  usersRouter.delete("/mycart/cart_items/:cartItemId", requireUser, async (req, res, next) => {
+    try {
+      const cartItem = await getCartItemById(req.params.cartItemId);
+      console.log(cartItem, "THIS IS CART ITEM DELETE");
+      const deletedCartItem = await destroyCartItem(cartItem.id);
+          res.send(deletedCartItem);
+      
+    } catch ({ name, message }) {
+      next({ name, message });
+    }
+  });
 
 module.exports = usersRouter;
