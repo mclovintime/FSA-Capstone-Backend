@@ -1,6 +1,7 @@
 const express = require("express");
 const usersRouter = express.Router();
 const jwt = require("jsonwebtoken");
+const { JWT_SECRET }=process.env;
 const { getCartByUser, getCartItemsByCart,getCartById,addProductToCartItems, getCartItemById, destroyCartItem } = require("../db");
 const { getAllUsers, getUser, getUserByUsername, createUser,} = require("../db/users");
 const { requireUser } = require("./utils");
