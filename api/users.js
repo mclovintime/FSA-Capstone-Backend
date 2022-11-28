@@ -64,12 +64,14 @@ usersRouter.post("/register", async (req, res, next) => {
           name: "UserExistsError",
           message: `User ${username} is already taken.`,
         });
-      } else {
+      } 
+      // else {
+      
         const newUser = await createUser({
           username,
           password,
           is_admin,
-          email
+          email,
         });
   
         const token = jwt.sign(newUser, process.env.JWT_SECRET, {
@@ -81,7 +83,7 @@ usersRouter.post("/register", async (req, res, next) => {
           token,
           user: newUser,
         });
-      }
+      // }
     } catch ({ name, message }) {
       next({ name, message });
     }
