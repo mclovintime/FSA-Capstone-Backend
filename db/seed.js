@@ -20,22 +20,29 @@ async function createInitialUsers() {
     const Tyler = await createUser({
       username: "Tyler",
       password: "123",
-      is_admin: "true",
+      is_admin: true,
+      email: "tyler1@gmail.com"
     });
     const Maaya = await createUser({
       username: "Maaya",
       password: "123",
-      is_admin: "true",
+      is_admin: true,
+      email: "maaya1@gmail.com"
+
     });
     const Thomas = await createUser({
       username: "Thomas",
       password: "123",
-      is_admin: "true",
+      is_admin: true,
+      email: "thomas1@gmail.com"
+
     });
     const Lucas = await createUser({
       username: "Lucas",
       password: "123",
-      is_admin: "true",
+      is_admin: true,
+      email: "lucas1@gmail.com"
+
     });
 
     console.log(Tyler);
@@ -200,8 +207,8 @@ async function createTables() {
           id SERIAL PRIMARY KEY,
           username varchar(255) UNIQUE NOT NULL,
           password varchar(255) NOT NULL,
-          is_admin BOOLEAN DEFAULT false
-          
+          is_admin BOOLEAN DEFAULT false,
+          email varchar(255) UNIQUE NOT NULL
         );
       `);
     //USE PENNIES FOR PRICE
