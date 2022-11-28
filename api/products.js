@@ -15,18 +15,18 @@ productsRouter.get('/', async (req, res, next) => {
       next({ name, message });
     }
   });
-
-  productsRouter.post("/", requireAdmin, async (req, res, next) => {
+//requireAdmin is undefined
+  productsRouter.post("/", async (req, res, next) => {
     const {   name,
         description,
-        inStock, 
+        stock, 
         image_url,
         price } = req.body;
    
   
     const productData = {  name,
         description,
-        inStock, 
+        stock, 
         image_url,
         price };
   
