@@ -139,10 +139,11 @@ usersRouter.post("/register", async (req, res, next) => {
     }
   })
 
-  usersRouter.post("/mycart/cart_items", requireUser,
+  usersRouter.post("/:cartId/cart_items", requireUser,
   
     async (req, res, next) => {
     try {
+        
         const cartId = req.user.id;
       const originalCart = await getCartById(cartId);
         

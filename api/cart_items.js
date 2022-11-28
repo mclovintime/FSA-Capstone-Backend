@@ -19,9 +19,7 @@ cartItemsRouter.get("/", async (req, res, next) => {
   cartItemsRouter.get("/:cartId/cart_items", async (req, res, next) => {
     try {
         const cartId = req.params
-        const userId = req.user.id
-      const userCart = await getCartByUser(userId);  
-      console.log(userCart, "this is userCart in API")
+  
       const cartItems = await getCartItemsByCart(cartId);
   
     res.send(cartItems)
@@ -92,5 +90,34 @@ cartItemsRouter.delete("/:cartItemId", requireUser, async (req, res, next) => {
       next({ name, message });
     }
   });
+
+
+  cartItemsRouter.post("/:cartId/cart_items", requireUser,
+  
+    async (req, res, next) => {
+    try {
+        
+        const cartId = req.params
+      const originalCart = await getCartById(cartId);
+        
+      if (originalCart) {
+         {
+            console.log(req.body, "REQ.BODY");
+            
+          const { productId, price, quantity } = req.body;
+
+
+        const updatedCartItems = await addProductToCartItems({
+            productId, cartId, price, quantity
+            });
+  
+            res.send(updatedCartItems);
+          }
+        } 
+    } catch (error) {
+    console.log(error)
+    }
+    }
+  );
 
 module.exports = cartItemsRouter
