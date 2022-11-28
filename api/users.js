@@ -22,11 +22,11 @@ usersRouter.get("/", async (req, res) => {
 usersRouter.post("/login", async (req, res, next) => {
     const { username, password} = req.body;
     try {
-      const user = await getUser({ username, password,  });
+      const user = await getUser({ username, password});
   
       if (user) {
         const token = jwt.sign(user, process.env.JWT_SECRET, {
-          expiresIn: "1w",
+          expiresIn: "24h",
         });
         res.send({
           token,
@@ -47,7 +47,7 @@ usersRouter.post("/login", async (req, res, next) => {
 
 // POST /api/users/register
 usersRouter.post("/register", async (req, res, next) => {
-    const { username, password, is_admin } = req.body;
+    const { username, password, is_admin, email } = req.body;
     try {
       const user = await getUserByUsername(username);
   
@@ -68,11 +68,12 @@ usersRouter.post("/register", async (req, res, next) => {
         const newUser = await createUser({
           username,
           password,
-            is_admin
+          is_admin,
+          email
         });
   
         const token = jwt.sign(newUser, process.env.JWT_SECRET, {
-          expiresIn: "1w",
+          expiresIn: "24h",
         });
   
         res.send({
