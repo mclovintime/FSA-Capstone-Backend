@@ -145,6 +145,33 @@ async function updateCartItem({ id, ...fields }) {
   }
 }
 
+async function updateItemQuantity({ id, upOrDown }) {
+    
+  
+  
+  
+    try {
+      
+      const itemQuantity =  await client.query(
+          `
+            GET quantity
+            FROM cart_items
+            WHERE id=${id}
+            RETURNING *;
+          `,
+          Object.values(fields)
+        );
+      console.log(itemQuantity, " this is itemQuantity")
+  
+ 
+  
+      return await getCartItemById(id);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
 module.exports = {
   addProductToCartItems,
   getAllCartItems,
@@ -152,5 +179,6 @@ module.exports = {
   getCartItemById,
   updateCartItem,
   getCartItemsByCart,
-  getCartItemsByUserId
+  getCartItemsByUserId,
+  updateItemQuantity
 };
