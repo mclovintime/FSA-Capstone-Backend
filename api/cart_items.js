@@ -33,6 +33,7 @@ cartItemsRouter.get("/", async (req, res, next) => {
 
 cartItemsRouter.patch("/:cartItemId", async (req, res, next) => {
     try {
+        console.log(req.body,"this is update Req.body")
       const {quantity } = req.body;
       const cartItemId = req.params.cartItemId;
       const cart_item = await getCartItemById(cartItemId);
@@ -47,8 +48,9 @@ cartItemsRouter.patch("/:cartItemId", async (req, res, next) => {
       } else {
         const updatedCartItem = await updateCartItem({
           id: cartItemId,
-          quantity,
+          quantity
         });
+        console.log(updatedCartItem)
         res.send(updatedCartItem);
       }
     } catch ({ name, message }) {
