@@ -163,7 +163,12 @@ async function updateItemQuantity({ id, upOrDown }) {
         );
       console.log(itemQuantity, " this is itemQuantity")
   
- 
+      itemQuantity = itemQuantity + upOrDown
+  await client.query(`
+   UPDATE cart_items
+   SET quantity = ${upOrDown}
+   WHERE id=${id}
+  `)
   
       return await getCartItemById(id);
     } catch (error) {
