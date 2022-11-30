@@ -2,7 +2,7 @@ const express = require("express");
 const usersRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET }=process.env;
-const { getCartByUser, getCartItemsByCart,getCartById,addProductToCartItems, getCartItemById, destroyCartItem } = require("../db");
+const { getCartByUser, getCartItemsByCart,getCartById,addProductToCartItems, getCartItemById, destroyCartItem, createCart,getIdByUsername } = require("../db");
 const { getAllUsers, getUser, getUserByUsername, createUser,} = require("../db/users");
 const { requireUser } = require("./utils");
 
@@ -78,13 +78,15 @@ usersRouter.post("/register", async (req, res, next) => {
         const token = jwt.sign(newUser, process.env.JWT_SECRET, {
           expiresIn: "24h",
         });
-  
         res.send({
           message: "thank you for signing up",
           token,
           user: newUser,
         });
-      // }
+        // }
+        let userId = await getIdByUsername(username)
+        let isActive = true
+        createCart(userId, isActive )
     } catch ({ name, message }) {
       next({ name, message });
     }
