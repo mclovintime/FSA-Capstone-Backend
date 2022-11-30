@@ -29,11 +29,14 @@ async function getCartById(cartId) {
 }
 
 
-  async function createCart({
-    userId,
-    isActive,}) 
-   {
-       const {rows: [cart]} = await client.query(`
+async function createCart(userId, isActive) {
+  console.log(userId, "this is userId for createCart")
+  
+  const {
+    rows: [cart],
+  } = await client.query(
+    `
+
        INSERT INTO cart("userId", "isActive")
        VALUES($1, $2)
        RETURNING *;

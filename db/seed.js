@@ -227,7 +227,7 @@ async function createTables() {
       CREATE TABLE cart (
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
-        "isActive" BOOLEAN DEFAULT false
+        "isActive" BOOLEAN DEFAULT true
       );
       `);
 
@@ -257,7 +257,7 @@ async function rebuildDB() {
     await createTables();
     await createInitialUsers();
     await createInitialProducts();
-    await createInitialCarts();
+    // await createInitialCarts();
     await createInitialCartItems();
     await getCartByUser(1);
     console.log("Testing Get Cart Items by Cart")

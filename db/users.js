@@ -1,9 +1,10 @@
 const client = require("./client");
 const bcrypt = require("bcrypt");
+const { createCart } = require("./cart");
 
 async function getAllUsers() {
   const { rows } = await client.query(
-    `SELECT id, username  
+    `SELECT id, username, email 
           FROM users;
         `
   );
@@ -28,6 +29,14 @@ async function createUser({ username, password, is_admin, email }) {
       [username, bcryptPassword, is_admin, email]
     );
 
+ console.log(user,"?????????????????")
+  
+  const cart = await createCart(user.id, true)
+  console.log(cart, "!!!!!!!!!!!!!!!!!")
+ 
+  
+   
+   
     delete user.password;
     return user;
   } catch (error) {
@@ -49,6 +58,7 @@ async function getUser({ username, password }) {
   }
 }
 
+
 async function getUserById(userId) {
   try {
     const {
@@ -64,13 +74,31 @@ async function getUserById(userId) {
   }
 }
 
-async function getUserByUsername(userName) {
+async function getUserByUsername(username) {
   try {
     const {
       rows: [user],
     } = await client.query(
       `
           SELECT *
+          FROM users
+          WHERE username=$1;
+        `,
+      [username]
+    );
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getIdByUsername(userName) {
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
+      `
+          SELECT id
           FROM users
           WHERE username=$1;
         `,
@@ -106,4 +134,5 @@ module.exports = {
   getUserById,
   getUserByUsername,
   getUser,
+  getIdByUsername
 };
