@@ -11,6 +11,7 @@ usersRouter.use("/", (req, res, next) => {
 });
 
 usersRouter.get("/", async (req, res) => {
+
   const users = await getAllUsers();
 
   res.send({
