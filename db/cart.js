@@ -34,7 +34,9 @@ async function getCartById(cartId) {
   }
 }
 
-async function createCart({ userId, isActive }) {
+async function createCart(userId, isActive) {
+  console.log(userId, "this is userId for createCart")
+  
   const {
     rows: [cart],
   } = await client.query(
