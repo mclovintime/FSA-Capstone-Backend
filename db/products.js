@@ -36,16 +36,16 @@ async function getProductById(productId) {
   }
 }
 
-async function createProduct({ name, description, stock, image_url, price }) {
+async function createProduct({ name, description, detailed_description, stock, image_url, price }) {
   const {
     rows: [products],
   } = await client.query(
     `
-             INSERT INTO products(name, description, stock, image_url, price)
-             VALUES($1, $2, $3, $4, $5)
+             INSERT INTO products(name, description, detailed_description, stock, image_url, price)
+             VALUES($1, $2, $3, $4, $5, $6)
              RETURNING *;
              `,
-    [name, description, stock, image_url, price]
+    [name, description, detailed_description, stock, image_url, price]
   );
 
   return products;
@@ -71,7 +71,7 @@ async function getProductByName(name) {
 }
 
 async function updateProduct({ id, ...fields }) {
-  const { name, description, stock, image_url, price } = fields;
+  const { name, description, detailed_description, stock, image_url, price } = fields;
 
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
