@@ -65,6 +65,7 @@ async function createInitialProducts() {
       {
         name: "Dimensional Sunglasses",
         description: "Enjoy the view",
+        detailed_description: "blah",
         stock: 4,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669084186/image_l3bwyl.png",
@@ -73,6 +74,7 @@ async function createInitialProducts() {
       {
         name: "Super cool space car",
         description: "Fly in style",
+        detailed_description: "blah",
         stock: 5,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669085856/sportscar_y6ctry.png",
@@ -81,6 +83,7 @@ async function createInitialProducts() {
       {
         name: "Galactic Shower",
         description: "Find your moment of zen.",
+        detailed_description: "blah",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
@@ -217,6 +220,7 @@ async function createTables() {
         id SERIAL PRIMARY KEY,
         name varchar(255) NOT NULL,
         description TEXT NOT NULL,
+        detailed_description TEXT NOT NULL,
         stock INTEGER,
         image_url TEXT NOT NULL,
         price INTEGER

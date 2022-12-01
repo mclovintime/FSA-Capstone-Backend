@@ -19,6 +19,7 @@ productsRouter.get('/', async (req, res, next) => {
   productsRouter.post("/", async (req, res, next) => {
     const {   name,
         description,
+        detailed_description,
         stock, 
         image_url,
         price } = req.body;
@@ -26,6 +27,7 @@ productsRouter.get('/', async (req, res, next) => {
   
     const productData = {  name,
         description,
+        detailed_description,
         stock, 
         image_url,
         price };
