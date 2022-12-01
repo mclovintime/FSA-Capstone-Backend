@@ -259,9 +259,9 @@ async function rebuildDB() {
     await createInitialProducts();
     // await createInitialCarts();
     await createInitialCartItems();
-    await getCartByUser(1);
+  
     console.log("Testing Get Cart Items by Cart")
-    await getCartItemsByCart(1);
+  
   
   } catch (error) {
     console.log("error during rebuildDB");
@@ -289,13 +289,8 @@ async function testDB() {
     const cartItems = await getAllCartItems();
     console.log("Result:", cartItems);
 
-    console.log("testing getCartByUser")
-    const userCartTest = await getCartByUser(1);;
-    console.log("Result", userCartTest)
 
-    console.log("testing getCartItemsByCart")
-    const getTest = await getCartItemsByCart(1);
-    console.log("Result", getTest)
+  
   
 
     console.log("Finished database tests!");
