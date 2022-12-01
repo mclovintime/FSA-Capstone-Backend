@@ -65,7 +65,7 @@ async function createInitialProducts() {
       {
         name: "Dimensional Sunglasses",
         description: "Enjoy the view",
-        detailed_description: "blah",
+        detailed_description: "These groundbreaking glasses will revolutionize your life! The Future-Gazer Glasses use cutting-edge technology to give you the power to see into the future. With these glasses, you can finally glimpse what lies ahead and take proactive measures to prepare for any surprises. Whether you're looking for career advice, planning your next vacation, or simply curious about what tomorrow holds, the Future-Gazer Glasses are an invaluable tool. Lightweight and comfortable, they offer a crystal clear view of the future so that you can make informed decisions with confidence. Take control of your future with the Future-Gazer Glasses!",
         stock: 4,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669084186/image_l3bwyl.png",
@@ -74,7 +74,7 @@ async function createInitialProducts() {
       {
         name: "Super cool space car",
         description: "Fly in style",
-        detailed_description: "blah",
+        detailed_description: "This super cool space car is the perfect way to stand out from the crowd. It features a sleek and modern design that will make a bold statement wherever you go. The car is powered by an electric engine that produces zero emissions, making it eco-friendly and perfect for long trips. It has an advanced navigation system with real-time traffic updates so you can avoid any delays in your journey. Its interior is spacious and comfortable, featuring heated seats and air conditioning that ensures everyone inside stays comfortable during their travels. With its powerful engine, stylish design and advanced technology, this super cool space car is sure to make any trip exciting!",
         stock: 5,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669085856/sportscar_y6ctry.png",
@@ -83,7 +83,7 @@ async function createInitialProducts() {
       {
         name: "Galactic Shower",
         description: "Find your moment of zen.",
-        detailed_description: "blah",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
