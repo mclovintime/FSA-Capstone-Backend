@@ -65,6 +65,7 @@ async function createInitialProducts() {
       {
         name: "Dimensional Sunglasses",
         description: "Enjoy the view",
+        detailed_description: "These groundbreaking glasses will revolutionize your life! The Future-Gazer Glasses use cutting-edge technology to give you the power to see into the future. With these glasses, you can finally glimpse what lies ahead and take proactive measures to prepare for any surprises. Whether you're looking for career advice, planning your next vacation, or simply curious about what tomorrow holds, the Future-Gazer Glasses are an invaluable tool. Lightweight and comfortable, they offer a crystal clear view of the future so that you can make informed decisions with confidence. Take control of your future with the Future-Gazer Glasses!",
         stock: 4,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669084186/image_l3bwyl.png",
@@ -73,19 +74,113 @@ async function createInitialProducts() {
       {
         name: "Super cool space car",
         description: "Fly in style",
+        detailed_description: "This super cool space car is the perfect way to stand out from the crowd. It features a sleek and modern design that will make a bold statement wherever you go. The car is powered by an electric engine that produces zero emissions, making it eco-friendly and perfect for long trips. It has an advanced navigation system with real-time traffic updates so you can avoid any delays in your journey. Its interior is spacious and comfortable, featuring heated seats and air conditioning that ensures everyone inside stays comfortable during their travels. With its powerful engine, stylish design and advanced technology, this super cool space car is sure to make any trip exciting!",
         stock: 5,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669085856/sportscar_y6ctry.png",
         price: 39999,
       },
       {
-        name: "Galactic Shower",
-        description: "Find your moment of zen.",
+        name: "Quantum Microscope",
+        description: "You have to see it to believe it",
+        detailed_description: "This quantum microscope can dive deeper than any others that come before it.",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989244/microscope_twb9yj.png",
+        price: 49999,
+      },
+      {
+        name: "Robot Assistant",
+        description: "He makes mean sandwiches",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
-        price: 29999,
+        price: 129999,
       },
+      {
+        name: "Time Machine",
+        description: "Careful with the time space continuum",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 3,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989961/time_machine_aefjn2.png",
+        price: 199999,
+      },
+      {
+        name: "Ingredients for Life",
+        description: "For spreading life throughout the galaxy",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989984/growinglife_r5ewpr.png",
+        price: 19999,
+      },
+      {
+        name: "Space Rocks",
+        description: "Rare minerals from outer asteroid clusters",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989976/comet_minerals_t7xgde.png",
+        price: 70999,
+      },
+
+      {
+        name: "Planet Investigator",
+        description: "For initial planet research",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989955/planet_investigator_liilxk.png",
+        price: 119999,
+      },
+      {
+        name: "Quantum Entanglement Teleporter",
+        description: "Convenient Transportation",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989943/teleporter_livjs2.png",
+        price: 319999,
+      },
+      {
+        name: "Space Station Beam",
+        description: "Can zip you right up to orbit in an instant.",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989950/space_platform_q1acop.png",
+        price: 1799999,
+      },
+      {
+        name: "Actual Universal Remote",
+        description: "It can genuinely control physics",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669990623/Literally_universal_remote_gq9hp6.png",
+        price: 550799999,
+      },
+      {
+        name: "Stone-cutting Laser",
+        description: "Cuts any stone with perfect precision.",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669991014/cutting_laser_xjh2bv.png",
+        price: 399999,
+      },
+      {
+        name: "Spectrometer Diamond",
+        description: "Radiates with the full spectrum",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669991093/gem_bzwh5s.png",
+        price: 1000000,
+      },
+      
     ];
     const products = await Promise.all(productsToCreate.map(createProduct));
 
@@ -218,6 +313,7 @@ async function createTables() {
         id SERIAL PRIMARY KEY,
         name varchar(255) NOT NULL,
         description TEXT NOT NULL,
+        detailed_description TEXT NOT NULL,
         stock INTEGER,
         image_url TEXT NOT NULL,
         price INTEGER
@@ -260,9 +356,14 @@ async function rebuildDB() {
     await createInitialProducts();
     // await createInitialCarts();
     await createInitialCartItems();
+
     // await getCartByUser(1);
     // console.log("Testing Get Cart Items by Cart")
     // await getCartItemsByCart(1);
+  
+    console.log("Testing Get Cart Items by Cart")
+  
+
   
   } catch (error) {
     console.log("error during rebuildDB");
@@ -290,6 +391,7 @@ async function testDB() {
     const cartItems = await getAllCartItems();
     console.log("Result:", cartItems);
 
+
     // console.log("testing getCartByUser")
     // const userCartTest = await getCartByUser(1);;
     // console.log("Result", userCartTest)
@@ -297,6 +399,10 @@ async function testDB() {
     // console.log("testing getCartItemsByCart")
     // const getTest = await getCartItemsByCart(1);
     // console.log("Result", getTest)
+
+
+  
+
   
 
     console.log("Finished database tests!");
