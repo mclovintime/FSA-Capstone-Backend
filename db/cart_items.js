@@ -72,19 +72,20 @@ async function getCartItemsByCart(id) {
 
 async function addProductToCartItems({ productId, cartId, price, quantity }) {
   try {
-    const {
-      rows: [cartItem],
-    } = await client.query(
+console.log(productId, price, quantity, cartId, "product Id")
+    const returned = await client.query(
       `
         INSERT INTO cart_items("productId", "cartId", price, quantity)
         VALUES ($1, $2, $3, $4)
- 
+        ON CONFLICT ("cartId", "productId") DO NOTHING
         RETURNING *;
       `,
       [productId, cartId, price, quantity]
     );
-
-    return cartItem;
+    const {
+      rows: [cartItem],
+    } =returned
+    return cartItem? cartItem : false;
   } catch (error) {
     throw error;
   }
@@ -102,14 +103,14 @@ async function getAllCartItems() {
 async function destroyCartItem(cartItemId) {
   try {
     const 
-      {rows}
+      {rows: [deleted]}
      = await client.query(`
       DELETE 
       FROM cart_items
       WHERE id = ${cartItemId}
       RETURNING *;
     `);
-    return rows;
+    return deleted;
   } catch (error) {
     console.error(error);
   }

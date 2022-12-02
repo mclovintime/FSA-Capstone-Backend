@@ -36,8 +36,12 @@ cartRouter.get("/", async (req, res, next) => {
         const updatedCartItems = await addProductToCartItems({
             productId, cartId, price, quantity
             });
-  
-            res.send(updatedCartItems);
+            if(updatedCartItems){
+              res.send(updatedCartItems)
+            }
+            else{
+              next({error: "Already in cart", name:"ProductNotAdded", message:"Product already in cart."})
+            }
           }
         } 
     } catch (error) {

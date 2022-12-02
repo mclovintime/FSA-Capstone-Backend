@@ -362,7 +362,8 @@ async function createTables() {
           "cartId" INTEGER REFERENCES cart(id),
           "productId" INTEGER REFERENCES products(id),
           price INTEGER, 
-          quantity INTEGER
+          quantity INTEGER,
+          UNIQUE ("cartId", "productId")
         );
         `);
 

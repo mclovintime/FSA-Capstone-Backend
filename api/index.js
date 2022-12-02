@@ -63,6 +63,7 @@ apiRouter.get('*', (req, res, next) => {
 })
 
 apiRouter.use((error, req, res, next) => {
+
   res.send({
     name: error.name,
     message: error.message
