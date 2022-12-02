@@ -81,6 +81,24 @@ async function createInitialProducts() {
         price: 39999,
       },
       {
+        name: "Dimensional Chair",
+        description: "Comfort out of this world",
+        detailed_description: "This quantum microscope can dive deeper than any others that come before it.",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669993521/chair_y2moxb.png",
+        price: 249999,
+      },
+      {
+        name: "Gravitational Boots",
+        description: "Equipped with flotation circuits",
+        detailed_description: "This quantum microscope can dive deeper than any others that come before it.",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669993512/boots_zh8j7r.png",
+        price: 149999,
+      },
+      {
         name: "Quantum Microscope",
         description: "You have to see it to believe it",
         detailed_description: "This quantum microscope can dive deeper than any others that come before it.",
