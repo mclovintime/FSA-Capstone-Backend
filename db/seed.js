@@ -81,6 +81,15 @@ async function createInitialProducts() {
         price: 39999,
       },
       {
+        name: "Galactic Shower",
+        description: "Find Your Zen",
+        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        stock: 6,
+        image_url:
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
+        price: 249999,
+      },
+      {
         name: "Dimensional Chair",
         description: "Comfort out of this world",
         detailed_description: "This quantum microscope can dive deeper than any others that come before it.",
@@ -113,7 +122,7 @@ async function createInitialProducts() {
         detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
         stock: 6,
         image_url:
-          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
+          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989933/helper_robot_xhtvwu.png",
         price: 129999,
       },
       {
