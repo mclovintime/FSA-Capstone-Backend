@@ -95,7 +95,7 @@ productsRouter.get('/', async (req, res, next) => {
 productsRouter.delete("/:productId", requireAdmin, async (req, res, next) => {
     try {
       const product = await getProductById(req.params.productId);
-      console.log(req.user);
+      console.log(req.user.is_admin);
   
       if (product) {
         console.log(product, "product");

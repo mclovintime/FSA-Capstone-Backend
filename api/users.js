@@ -185,4 +185,38 @@ usersRouter.post("/register", async (req, res, next) => {
     }
   });
 
+  usersRouter.patch("/me", requireUser, async (req, res, next) => {
+    const { userId } = req.params;
+    
+    const fields = req.body;
+    if (req.body) {
+      try {
+        const originalProduct = await getProductById(productId);
+    
+  
+        if (originalProduct) {
+          const updatedProduct = await updateProduct({
+            id: productId,
+            ...fields,
+          });
+          res.send(updatedProduct);
+        } else {
+          next({
+            name: "product does not exist",
+            message: `product ${productId} not found`,
+            error: "error",
+          });
+        }
+      } catch ({ name, message, error }) {
+        next({ name, message, error });
+      }
+    } else {
+      next({
+        name: "There is no req.body",
+        message: "We need a body",
+        error: "error",
+      });
+    }
+  });
+
 module.exports = usersRouter;
