@@ -303,7 +303,8 @@ async function createTables() {
           username varchar(255) UNIQUE NOT NULL,
           password varchar(255) NOT NULL,
           is_admin BOOLEAN DEFAULT false,
-          email varchar(255) UNIQUE NOT NULL
+          email varchar(255) UNIQUE NOT NULL,
+          address TEXT
         );
       `);
     //USE PENNIES FOR PRICE
@@ -355,9 +356,14 @@ async function rebuildDB() {
     await createInitialProducts();
     // await createInitialCarts();
     await createInitialCartItems();
+
+    // await getCartByUser(1);
+    // console.log("Testing Get Cart Items by Cart")
+    // await getCartItemsByCart(1);
   
     console.log("Testing Get Cart Items by Cart")
   
+
   
   } catch (error) {
     console.log("error during rebuildDB");
@@ -386,7 +392,17 @@ async function testDB() {
     console.log("Result:", cartItems);
 
 
+    // console.log("testing getCartByUser")
+    // const userCartTest = await getCartByUser(1);;
+    // console.log("Result", userCartTest)
+
+    // console.log("testing getCartItemsByCart")
+    // const getTest = await getCartItemsByCart(1);
+    // console.log("Result", getTest)
+
+
   
+
   
 
     console.log("Finished database tests!");

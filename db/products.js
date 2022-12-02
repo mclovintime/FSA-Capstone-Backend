@@ -119,7 +119,6 @@ module.exports = {
   getProductById,
   getAllProducts,
   createProduct,
-
   updateProduct,
   getProductByName,
   destroyProduct,
