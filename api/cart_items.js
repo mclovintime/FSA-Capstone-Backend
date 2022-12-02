@@ -38,14 +38,8 @@ cartItemsRouter.patch("/:cartItemId", async (req, res, next) => {
       const cartItemId = req.params.cartItemId;
       const cart_item = await getCartItemById(cartItemId);
       const cart = await getCartById(cart_item.cartId);
-      if (cart.userId != req.user.id) {
-        res.status(403);
-        next({
-          error: "error message",
-          name: "User Not Found",
-          message: `User ${req.user.username} is not allowed to update this cart.`,
-        });
-      } else {
+      if(cart_item)
+       {
         const updatedCartItem = await updateCartItem({
           id: cartItemId,
           quantity

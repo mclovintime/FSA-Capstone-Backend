@@ -12,7 +12,7 @@ async function getAllCarts() {
 async function getCartById(cartId) {
   try {
     const { rows: [cart] } = await client.query(`
-      SELECT *
+      SELECT id
       FROM cart
       WHERE id=$1;
     `, [cartId])
@@ -23,6 +23,63 @@ async function getCartById(cartId) {
           message: "Could not find the cart with that ID"
       };
     } return cart;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getInactiveCartsByUserId(userId) {
+  try {
+    const { rows: carts } = await client.query(`
+      SELECT *
+      FROM cart
+      WHERE "userId"=$1 AND "isActive"=false
+    `, [userId])
+
+    if(!carts) {
+      throw {
+          name: "CartNotFoundError",
+          message: "Could not find the cart with that ID"
+      };
+    } return carts;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getActiveCartByUserId(userId) {
+  try {
+    const { rows: [cart] } = await client.query(`
+      SELECT id
+      FROM cart
+      WHERE "userId"=$1 AND "isActive"=true
+    `, [userId])
+
+    if(!cart) {
+      throw {
+          name: "CartNotFoundError",
+          message: "Could not find the cart with that ID"
+      };
+
+    }
+    console.log(cart.id)
+     return cart.id;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function deactivateCart(cartId) {
+  try {
+    const {
+      rows: [cart],
+    } = await client.query(`
+              UPDATE CART
+              SET "isActive"=false
+              WHERE id =$1
+              RETURNING *;
+            `,[cartId]);
+    return cart;
   } catch (error) {
     console.error(error);
   }
@@ -66,5 +123,8 @@ module.exports = {
     getAllCarts,
     getCartById,
     createCart,
-    destroyCart
+    destroyCart,
+    getInactiveCartsByUserId,
+    getActiveCartByUserId,
+   deactivateCart
   };
