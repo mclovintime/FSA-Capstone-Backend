@@ -4,7 +4,7 @@ const { createCart } = require("./cart");
 
 async function getAllUsers() {
   const { rows } = await client.query(
-    `SELECT id, username, email 
+    `SELECT id, username, email, address
           FROM users;
         `
   );
@@ -12,7 +12,7 @@ async function getAllUsers() {
   return rows;
 }
 
-async function createUser({ username, password, is_admin, email }) {
+async function createUser({ username, password, is_admin, email, address }) {
   const saltRound = 10;
   const salt = await bcrypt.genSalt(saltRound);
   const bcryptPassword = await bcrypt.hash(password, salt);
@@ -21,12 +21,12 @@ async function createUser({ username, password, is_admin, email }) {
       rows: [user],
     } = await client.query(
       `
-          INSERT INTO users(username, password, is_admin, email )
-          VALUES ($1, $2, $3, $4)
+          INSERT INTO users(username, password, is_admin, email, address )
+          VALUES ($1, $2, $3, $4, $5)
           ON CONFLICT (username) DO NOTHING 
           RETURNING *;
         `,
-      [username, bcryptPassword, is_admin, email]
+      [username, bcryptPassword, is_admin, email, address]
     );
 
  console.log(user,"?????????????????")
@@ -129,15 +129,18 @@ async function getUserByEmail(email) {
 }
 
 async function updateUser( { id, ...fields }) {
-  const {username, email, address} = fields;
 
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
     .join(", ");
 
-  try {
-    if (setString.length > 0) {
-     await client.query(
+    if (setString.length === 0) {
+      return;
+    }
+    try {
+      const {
+        rows: [user],
+      }= await client.query(
       `
           UPDATE users
           SET ${setString}
@@ -146,16 +149,13 @@ async function updateUser( { id, ...fields }) {
         `,
         Object.values(fields)
     );
-     }
-     if (username === undefined) {
-      return await getUserById(id);
-     }
-
-    return await getUserById(id);
-  } catch (error) {
+    return user;
+     } catch (error) {
+      console.error(error)
     throw error;
   }
 }
+
 
 module.exports = {
   getAllUsers,

@@ -21,27 +21,34 @@ async function createInitialUsers() {
       username: "Tyler",
       password: "123",
       is_admin: true,
-      email: "tyler1@gmail.com"
+      email: "tyler1@gmail.com",
+      address: "1 East Ave New Orleans, LA 70032 USA"
     });
     const Maaya = await createUser({
       username: "Maaya",
       password: "123",
       is_admin: true,
-      email: "maaya1@gmail.com"
+      email: "maaya1@gmail.com",
+      address: "1 West Ave Chicago, IL 60647 USA"
+
 
     });
     const Thomas = await createUser({
       username: "Thomas",
       password: "123",
       is_admin: true,
-      email: "thomas1@gmail.com"
+      email: "thomas1@gmail.com",
+      address: "1 South Ave JacksonVille, FL 32034 USA"
+
 
     });
     const Lucas = await createUser({
       username: "Lucas",
       password: "123",
       is_admin: true,
-      email: "lucas1@gmail.com"
+      email: "lucas1@gmail.com",
+      address: "1 North Ave Salt Lake City, UT 84407 USA"
+
 
     });
 
@@ -331,7 +338,7 @@ async function createTables() {
           password varchar(255) NOT NULL,
           is_admin BOOLEAN DEFAULT false,
           email varchar(255) UNIQUE NOT NULL,
-          address TEXT
+          address varchar(255) NOT NULL
         );
       `);
     //USE PENNIES FOR PRICE

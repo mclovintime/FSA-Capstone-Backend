@@ -19,6 +19,8 @@ const {
   getUser,
   getUserByUsername,
   createUser,
+  getUserById,
+  updateUser
 } = require("../db/users");
 const { requireUser } = require("./utils");
 
@@ -235,25 +237,25 @@ usersRouter.delete(
   }
 );
 
-  usersRouter.patch("/me", requireUser, async (req, res, next) => {
+  usersRouter.patch("/me/:userId", requireUser, async (req, res, next) => {
     const { userId } = req.params;
-    
     const fields = req.body;
+    console.log(fields)
     if (req.body) {
       try {
-        const originalProduct = await getProductById(productId);
+        const originalUser = await getUserById(userId);
     
   
-        if (originalProduct) {
-          const updatedProduct = await updateProduct({
-            id: productId,
+        if (originalUser) {
+          const updatedUser = await updateUser({
+            id: userId,
             ...fields,
           });
-          res.send(updatedProduct);
+          res.send(updatedUser);
         } else {
           next({
-            name: "product does not exist",
-            message: `product ${productId} not found`,
+            name: "user does not exist",
+            message: `user ${userId} not found`,
             error: "error",
           });
         }
