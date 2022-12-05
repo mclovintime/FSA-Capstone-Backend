@@ -92,7 +92,7 @@ async function createInitialProducts() {
       {
         name: "Dimensional Chair",
         description: "Comfort out of this world",
-        detailed_description: "This quantum microscope can dive deeper than any others that come before it.",
+        detailed_description: "Introducing the Dimensional Chair, the latest in seating technology! This sleek and stylish chair has been designed to provide you with unparalleled comfort and luxury. It features an adjustable backrest that automatically adjusts to your body's shape, allowing for maximum support. The armrests feature built-in massage technology, allowing for targeted relaxation at the end of a long day. The contoured seat is ergonomically designed to reduce pressure points and alleviate back pain. With its futuristic design and cutting-edge features, the Dimensional Chair is sure to take your seating experience to the next level!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669993521/chair_y2moxb.png",
@@ -101,7 +101,7 @@ async function createInitialProducts() {
       {
         name: "Gravitational Boots",
         description: "Equipped with flotation circuits",
-        detailed_description: "This quantum microscope can dive deeper than any others that come before it.",
+        detailed_description: "Introducing the latest in anti-gravity technology! Our anti-gravity boots are your ticket to a magical experience like no other. With these boots, you can defy gravity and soar through the air with ease. Our boots feature a cutting-edge design that utilizes powerful magnetic fields to help you take off and stay afloat. The sleek and comfortable design ensures that you can enjoy hours of fun without feeling weighed down or uncomfortable. With our anti-gravity boots, sky's the limit!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669993512/boots_zh8j7r.png",
@@ -110,7 +110,7 @@ async function createInitialProducts() {
       {
         name: "Quantum Microscope",
         description: "You have to see it to believe it",
-        detailed_description: "This quantum microscope can dive deeper than any others that come before it.",
+        detailed_description: "The Quantum Microscope is the latest advancement in microscopy technology. With unmatched accuracy and precision, this state-of-the-art device can magnify objects and particles to levels never before seen. Utilizing a combination of advanced optics, lasers, and quantum imaging techniques, it can detect features as small as 1 nanometer with astonishing clarity. Its flexible design allows for easy integration with existing lab equipment, making it an ideal tool for researchers in fields such as material science, nanotechnology, and biophysics. Whether you need to analyze particles or observe ultra-small biological structures such as viruses or bacteria, the Quantum Microscope will provide unparalleled imaging capabilities for a wide range of applications.",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989244/microscope_twb9yj.png",
@@ -119,7 +119,7 @@ async function createInitialProducts() {
       {
         name: "Robot Assistant",
         description: "He makes mean sandwiches",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "Introducing the newest and most advanced robotic assistant,  the Robo-Aid! This powerful robot is designed to make your life easier and more efficient. With its advanced artificial intelligence and voice recognition capabilities, the Robo-Aid will understand your commands and act accordingly. It can perform various tasks from controlling your smart home devices to providing information on the weather or news. It also has integrated sensors that allow it to detect obstacles in its path, enabling it to navigate around them with ease. You'll never have to worry about forgetting something again as this robot will remind you of any important tasks or events coming up. With its sleek design and customizable features, the Robo-Aid is sure to be a welcome addition to any home or office!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989933/helper_robot_xhtvwu.png",
@@ -156,7 +156,7 @@ async function createInitialProducts() {
       {
         name: "Planet Investigator",
         description: "For initial planet research",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "Introducing the Planet Investigating Robot, the perfect tool for exploring distant planets and distant galaxies! This ingenious robot features advanced movement sensors, allowing it to navigate even the toughest terrain with ease. Its powerful camera system allows for crystal-clear images and videos of planets, stars, and galaxies from far away. The robot is equipped with a computer interface that provides real-time data about its surroundings, helping you make informed decisions about your investigations. Plus, its durable exterior ensures that it can withstand the harshest conditions without fail. Investigate the unknown with the Planet Investigating Robot - explore deep space today!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989955/planet_investigator_liilxk.png",
@@ -165,7 +165,7 @@ async function createInitialProducts() {
       {
         name: "Entanglement Teleporter",
         description: "Convenient Transportation",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "The Human Teleporter is the perfect device for those looking to move quickly and efficiently from place to place. This innovative device uses advanced technology to instantly transport you up to 500 miles in a matter of seconds, with no waiting or delays. Its compact size makes it easy to carry and store, allowing you to take it with you wherever your travels take you. With its simple one-touch activation, the Human Teleporter provides an effortless way of getting from point A to point B without worry or hassle. Whether you’re traveling across town or across the country, the Human Teleporter will get you there faster than ever before!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989943/teleporter_livjs2.png",
@@ -183,7 +183,7 @@ async function createInitialProducts() {
       {
         name: "Actual Universal Remote",
         description: "It can genuinely control physics",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "Our revolutionary remote control changes the laws of gravity with just a click of a button! With its intuitive design, controlling gravity has never been easier. Simply point the remote at any object and press the up or down buttons to change its gravitational pull. The range is adjustable up to 10 meters, so you can lift objects up to 10 meters away! Whether it's for fun, practical purposes or even scientific experiments, our remote control will take your creativity to new heights – literally! Plus, it runs on batteries so you don't have to worry about plugging it in. Get yours today and start exploring the possibilities of gravity!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669990623/Literally_universal_remote_gq9hp6.png",
@@ -201,7 +201,7 @@ async function createInitialProducts() {
       {
         name: "Spectrometer Diamond",
         description: "Radiates with the full spectrum",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "The Spectrometer Diamond is the perfect instrument for any lab or research facility. With its advanced design and features, it offers an accurate and reliable way to analyze substances. Its high-resolution optics ensure precise readings, while its intuitive controls make it easy to use in any environment. The diamond-coated prism ensures maximum accuracy when studying light spectrum patterns, and its USB connection allows for easy data transfer and storage. Whether you’re in the lab or out in the field, this spectrometer will be your go-to tool for all of your spectral analysis needs.",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669991093/gem_bzwh5s.png",
