@@ -66,7 +66,7 @@ usersRouter.post("/login", async (req, res, next) => {
 
 // POST /api/users/register
 usersRouter.post("/register", async (req, res, next) => {
-  const { username, password, is_admin, email } = req.body;
+  const { username, password, is_admin, email, address } = req.body;
   try {
     const user = await getUserByUsername(username);
 
@@ -91,6 +91,7 @@ usersRouter.post("/register", async (req, res, next) => {
       password,
       is_admin,
       email,
+      address
     });
 
     const token = jwt.sign(newUser, process.env.JWT_SECRET, {
