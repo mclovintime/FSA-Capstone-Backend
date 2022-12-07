@@ -234,24 +234,30 @@ async function createInitialCarts() {
   const cartsToCreate = [
     {
       userId: 1,
-      isActive: true,
+      isActive: false,
     },
+    {
+      userId: 1,
+      isActive: false,
+    },
+  
     {
       userId: 2,
-      isActive: true,
+      isActive: false,
     },
+ 
     {
       userId: 3,
-      isActive: true,
+      isActive: false,
     },
     {
       userId: 4,
-      isActive: true,
+      isActive: false,
     },
   ];
 
   const carts = await Promise.all(
-    cartsToCreate.map((cart) => createCart(cart))
+    cartsToCreate.map((cart) => createCart(cart.userId, cart.isActive))
   );
 
   console.log("Carts Created: ", carts);

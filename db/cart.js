@@ -29,13 +29,15 @@ async function getCartById(cartId) {
 }
 
 async function getInactiveCartsByUserId(userId) {
+  console.log(typeof userId, "line 32 user ID in DB")
   try {
     const { rows: carts } = await client.query(`
       SELECT *
       FROM cart
-      WHERE "userId"=$1 AND "isActive"=false
+      WHERE "userId"=$1 AND "isActive"=false;
     `, [userId])
 
+    console.log(carts, "DB CARTS LINE 39")
     if(!carts) {
       throw {
           name: "CartNotFoundError",
