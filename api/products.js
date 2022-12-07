@@ -22,7 +22,8 @@ productsRouter.get('/', async (req, res, next) => {
         detailed_description,
         stock, 
         image_url,
-        price } = req.body;
+        price,
+      category } = req.body;
    
   
     const productData = {  name,
@@ -30,7 +31,8 @@ productsRouter.get('/', async (req, res, next) => {
         detailed_description,
         stock, 
         image_url,
-        price };
+        price,
+        category };
   
     try {
       const product = await createProduct(productData);
