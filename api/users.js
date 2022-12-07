@@ -13,6 +13,7 @@ const {
   createCart,
   getIdByUsername,
   deactivateCart,
+  getInactiveCartsByUserId,
 } = require("../db");
 const {
   getAllUsers,
@@ -153,6 +154,39 @@ usersRouter.get("/mycart/cart_items", requireUser, async (req, res, next) => {
 
     if (req.user) {
       res.send(cartItemsList);
+    }
+  } catch ({ name, message }) {
+    next({ name, message });
+  }
+});
+
+usersRouter.get("/orderHistory", requireUser, async (req, res, next) => {
+  const carts = await getInactiveCartsByUserId(req.user.id);
+  console.log(req.user.id, "user ID")
+  console.log(carts, "line 166");
+
+// const mappedCartItems =  await Promise.all(
+//   carts.map(async (cart) => getCartItemsByCart(cart.id)))
+//   console.log(mappedCartItems)
+
+//map over carts, in the function call getCartItemsByCart(cart.id)
+//wrap that in promise.all which will await all of the promises
+//example in fitness tracker
+
+  try {
+
+    
+const mappedCartItems =  await Promise.all(
+  carts.map(async (cart) => getCartItemsByCart(cart.id)))
+  console.log(mappedCartItems, "line 181 mapped Cart items")
+    const cartItemsList = (await getCartItemsByCart(carts)).map(
+      (cartItem) => cartItem
+    );
+
+    console.log(cartItemsList, "A LIST OF CART ITEMS MILORD");
+
+    if (req.user) {
+      res.send(mappedCartItems);
     }
   } catch ({ name, message }) {
     next({ name, message });
