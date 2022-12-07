@@ -89,7 +89,7 @@ async function deactivateCart(cartId) {
 
 
 async function createCart(userId, isActive) {
-  console.log(userId, "this is userId for createCart")
+  console.log(userId, "this is userId for createCart, line 92 in DB")
   
   const {
     rows: [cart],
@@ -100,7 +100,7 @@ async function createCart(userId, isActive) {
        VALUES($1, $2)
        RETURNING *;
        `, [userId, isActive]);
-     
+     console.log(cart, "line 103 create cart")
        return cart
  }
 

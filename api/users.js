@@ -85,7 +85,7 @@ usersRouter.post("/register", async (req, res, next) => {
       });
     }
     // else {
-
+const is_admin = false
     const newUser = await createUser({
       username,
       password,
@@ -93,6 +93,8 @@ usersRouter.post("/register", async (req, res, next) => {
       email,
       address
     });
+
+    console.log (newUser, "line 97 user API")
 
     const token = jwt.sign(newUser, process.env.JWT_SECRET, {
       expiresIn: "24h",
@@ -103,9 +105,10 @@ usersRouter.post("/register", async (req, res, next) => {
       user: newUser,
     });
     // }
-    let userId = await getIdByUsername(username);
-    let isActive = true;
-    createCart(userId, isActive);
+    // let userId = await getIdByUsername(username);
+    // console.log(userId.id, "line 109, register API, userID")
+    // let isActive = true;
+    // createCart(userId.id, isActive);
   } catch ({ name, message }) {
     next({ name, message });
   }
