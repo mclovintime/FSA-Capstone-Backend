@@ -77,6 +77,7 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669084186/image_l3bwyl.png",
         price: 11999,
+        category: "accessories"
       },
       {
         name: "Super cool space car",
@@ -86,6 +87,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669085856/sportscar_y6ctry.png",
         price: 39999,
+        category: "transportation"
+
       },
       {
         name: "Galactic Shower",
@@ -95,6 +98,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669086021/shower_zmyihh.png",
         price: 249999,
+        category: "household"
+
       },
       {
         name: "Dimensional Chair",
@@ -104,6 +109,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669993521/chair_y2moxb.png",
         price: 249999,
+        category: "household"
+
       },
       {
         name: "Gravitational Boots",
@@ -113,6 +120,9 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669993512/boots_zh8j7r.png",
         price: 149999,
+        category: "apparel"
+
+        
       },
       {
         name: "Quantum Microscope",
@@ -122,6 +132,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989244/microscope_twb9yj.png",
         price: 49999,
+        category: "household"
+
       },
       {
         name: "Robot Assistant",
@@ -131,6 +143,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989933/helper_robot_xhtvwu.png",
         price: 129999,
+        category: "household"
+
       },
       {
         name: "Time Machine",
@@ -140,6 +154,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989961/time_machine_aefjn2.png",
         price: 199999,
+        category: "transportation"
+
       },
       {
         name: "Ingredients for Life",
@@ -149,6 +165,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989984/growinglife_r5ewpr.png",
         price: 19999,
+        category: "household"
+
       },
       {
         name: "Space Rocks",
@@ -158,6 +176,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989976/comet_minerals_t7xgde.png",
         price: 70999,
+        category: "household"
+
       },
 
       {
@@ -168,6 +188,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989955/planet_investigator_liilxk.png",
         price: 119999,
+        category: "transportation"
+
       },
       {
         name: "Zip Teleporter",
@@ -177,6 +199,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989943/teleporter_livjs2.png",
         price: 319999,
+        category: "transportation"
+
       },
       {
         name: "Space Station Beam",
@@ -186,6 +210,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989950/space_platform_q1acop.png",
         price: 1799999,
+        category: "transportation"
+
       },
       {
         name: "Actual Universal Remote",
@@ -194,7 +220,9 @@ async function createInitialProducts() {
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669990623/Literally_universal_remote_gq9hp6.png",
-        price: 550999,
+        price: 550799999,
+        category: "transportation"
+
       },
       {
         name: "Stone-cutting Laser",
@@ -204,6 +232,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669991014/cutting_laser_xjh2bv.png",
         price: 399999,
+        category: "household"
+
       },
       {
         name: "Spectrometer Diamond",
@@ -213,6 +243,8 @@ async function createInitialProducts() {
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669991093/gem_bzwh5s.png",
         price: 1000000,
+        category: "accessories"
+
       },
       
     ];
@@ -234,24 +266,30 @@ async function createInitialCarts() {
   const cartsToCreate = [
     {
       userId: 1,
-      isActive: true,
+      isActive: false,
     },
+    {
+      userId: 1,
+      isActive: false,
+    },
+  
     {
       userId: 2,
-      isActive: true,
+      isActive: false,
     },
+ 
     {
       userId: 3,
-      isActive: true,
+      isActive: false,
     },
     {
       userId: 4,
-      isActive: true,
+      isActive: false,
     },
   ];
 
   const carts = await Promise.all(
-    cartsToCreate.map((cart) => createCart(cart))
+    cartsToCreate.map((cart) => createCart(cart.userId, cart.isActive))
   );
 
   console.log("Carts Created: ", carts);
@@ -338,7 +376,7 @@ async function createTables() {
           password varchar(255) NOT NULL,
           is_admin BOOLEAN DEFAULT false,
           email varchar(255) UNIQUE NOT NULL,
-          address varchar(255) NOT NULL
+          address varchar(255)
         );
       `);
     //USE PENNIES FOR PRICE
@@ -350,7 +388,8 @@ async function createTables() {
         detailed_description TEXT NOT NULL,
         stock INTEGER,
         image_url TEXT NOT NULL,
-        price INTEGER
+        price INTEGER,
+        category TEXT
       );
       `);
 //should default be true?

@@ -29,13 +29,15 @@ async function getCartById(cartId) {
 }
 
 async function getInactiveCartsByUserId(userId) {
+  console.log(typeof userId, "line 32 user ID in DB")
   try {
     const { rows: carts } = await client.query(`
       SELECT *
       FROM cart
-      WHERE "userId"=$1 AND "isActive"=false
+      WHERE "userId"=$1 AND "isActive"=false;
     `, [userId])
 
+    console.log(carts, "DB CARTS LINE 39")
     if(!carts) {
       throw {
           name: "CartNotFoundError",
@@ -87,7 +89,7 @@ async function deactivateCart(cartId) {
 
 
 async function createCart(userId, isActive) {
-  console.log(userId, "this is userId for createCart")
+  console.log(userId, "this is userId for createCart, line 92 in DB")
   
   const {
     rows: [cart],
@@ -98,7 +100,7 @@ async function createCart(userId, isActive) {
        VALUES($1, $2)
        RETURNING *;
        `, [userId, isActive]);
-     
+     console.log(cart, "line 103 create cart")
        return cart
  }
 

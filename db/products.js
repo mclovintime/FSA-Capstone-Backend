@@ -36,16 +36,16 @@ async function getProductById(productId) {
   }
 }
 
-async function createProduct({ name, description, detailed_description, stock, image_url, price }) {
+async function createProduct({ name, description, detailed_description, stock, image_url, price, category }) {
   const {
     rows: [products],
   } = await client.query(
     `
-             INSERT INTO products(name, description, detailed_description, stock, image_url, price)
-             VALUES($1, $2, $3, $4, $5, $6)
+             INSERT INTO products(name, description, detailed_description, stock, image_url, price, category)
+             VALUES($1, $2, $3, $4, $5, $6, $7)
              RETURNING *;
              `,
-    [name, description, detailed_description, stock, image_url, price]
+    [name, description, detailed_description, stock, image_url, price, category]
   );
 
   return products;
@@ -71,7 +71,7 @@ async function getProductByName(name) {
 }
 
 async function updateProduct({ id, ...fields }) {
-  const { name, description, detailed_description, stock, image_url, price } = fields;
+  const { name, description, detailed_description, stock, image_url, price, category } = fields;
 
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
@@ -115,6 +115,25 @@ async function destroyProduct(id) {
   }
 }
 
+async function getProductByCategory(category) {
+const {
+  rows: [product],
+  
+} = await client.query(
+  `
+          SELECT *
+          FROM products
+          WHERE category=$1;
+        `,
+  [category]
+); 
+if (!product) {
+  console.log("No Product found");
+} else {
+  return product;
+}
+}
+
 module.exports = {
   getProductById,
   getAllProducts,
@@ -122,4 +141,5 @@ module.exports = {
   updateProduct,
   getProductByName,
   destroyProduct,
+  getProductByCategory
 };

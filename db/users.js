@@ -29,10 +29,10 @@ async function createUser({ username, password, is_admin, email, address }) {
       [username, bcryptPassword, is_admin, email, address]
     );
 
- console.log(user,"?????????????????")
-  
-  const cart = await createCart(user.id, true)
-  console.log(cart, "!!!!!!!!!!!!!!!!!")
+ console.log(user.id,"????????????????? line 32")
+  const id = user.id
+  const cart = await createCart(id, true)
+  console.log(cart, "!!!!!!!!!!!!!!!!! line 35")
  
   
    
