@@ -138,7 +138,7 @@ async function createInitialProducts() {
       {
         name: "Robot Assistant",
         description: "He makes mean sandwiches",
-        detailed_description: "Introducing the newest and most advanced robotic assistant,  the Robo-Aid! This powerful robot is designed to make your life easier and more efficient. With its advanced artificial intelligence and voice recognition capabilities, the Robo-Aid will understand your commands and act accordingly. It can perform various tasks from controlling your smart home devices to providing information on the weather or news. It also has integrated sensors that allow it to detect obstacles in its path, enabling it to navigate around them with ease. You'll never have to worry about forgetting something again as this robot will remind you of any important tasks or events coming up. With its sleek design and customizable features, the Robo-Aid is sure to be a welcome addition to any home or office!",
+        detailed_description: "Introducing the newest and most advanced robotic assistant, the Robo-Aid! This powerful robot is designed to make your life easier and more efficient. With its advanced artificial intelligence and voice recognition capabilities, the Robo-Aid will understand your commands and act accordingly. It can perform various tasks from controlling your smart home devices to providing information on the weather or news. It also has integrated sensors that allow it to detect obstacles in its path, enabling it to navigate around them with ease. You'll never have to worry about forgetting something again as this robot will remind you of any important tasks or events coming up. With its sleek design and customizable features, the Robo-Aid is sure to be a welcome addition to any home or office!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989933/helper_robot_xhtvwu.png",
@@ -149,7 +149,7 @@ async function createInitialProducts() {
       {
         name: "Time Machine",
         description: "Be careful!",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "Introducing the newest and most advanced time machine ever created! Our state-of-the-art device is the only one of its kind, allowing you to travel through both time and space. With our time machine, you can go back in time to any point in history or explore the future of tomorrow. It's safe, reliable, and easy to use - simply set your destination date and hit the start button! Plus, our time machine has a sleek and modern design that will fit seamlessly into any home or office environment. Experience the past or the future with this incredible device - get your own today!",
         stock: 3,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989961/time_machine_aefjn2.png",
@@ -160,7 +160,7 @@ async function createInitialProducts() {
       {
         name: "Ingredients for Life",
         description: "Spreading galactic life",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "Welcome to the future of space exploration! Our new planet-colonizing kit is perfect for anyone who wants to explore the universe and colonize distant planets. With this kit, you'll have everything you need to get started right away. Our kit includes a spacecraft, a planetary surveyor, a habitat module, and all the supplies necessary for survival in hostile environments. The spacecraft is equipped with advanced navigation systems and powerful engines that will take you wherever your heart desires. The planetary surveyor will help you map out your journey and identify ideal locations for colonization. Finally, the habitat module provides shelter as well as food production capabilities allowing you to create self-sustaining colonies on distant worlds. With our planet-colonizing kit, your dreams of space exploration are just a few clicks away!",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989984/growinglife_r5ewpr.png",
@@ -171,7 +171,7 @@ async function createInitialProducts() {
       {
         name: "Space Rocks",
         description: "Rare asteroid minerals",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "Experience the thrill of owning a piece of history with this incredible collection of rare asteroid rocks. Each rock has been carefully selected for its unique characteristics and is guaranteed to be a one-of-a-kind addition to your collection. These extraterrestrial specimens are sure to spark conversation and wonder, as each one contains clues about the formation and evolution of our universe. The rocks are available in assorted sizes, giving you plenty of options for display or study. Whether you're an amateur astronomer, geologist, or just someone who appreciates natural beauty, these rare meteorites will bring joy and fascination into your home or office.",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989976/comet_minerals_t7xgde.png",
@@ -205,7 +205,7 @@ async function createInitialProducts() {
       {
         name: "Space Station Beam",
         description: "Zips you right up to orbit.",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "Introducing the revolutionary Human Teleporting Beam, the latest breakthrough in transportation technology! This amazing device allows you to travel anywhere in the world in an instant. Simply step into the beam and choose your destination, and you’ll be teleported there without any hassle or delay. With its advanced safety features, you can rest assured that your journey will be safe and secure. Plus, it’s convenient and easy to use – no need for expensive tickets or long waits at airports! Experience the magic of teleportation today with the Human Teleporting Beam.",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669989950/space_platform_q1acop.png",
@@ -227,7 +227,7 @@ async function createInitialProducts() {
       {
         name: "Stone-cutting Laser",
         description: "Cuts stone to perfection.",
-        detailed_description: "This modern shower head will take you to the stars and beyond! The Galaxy Shower Head is a unique and luxurious shower experience that eliminates pain and discomfort. Its unique design features a powerful, soothing rainfall effect with hundreds of tiny nozzles that provide a gentle massage to your back, neck, and shoulders. Its chrome finish adds a touch of style to your bathroom, while its anti-clog nozzles help reduce buildup for easy maintenance. Plus, it's equipped with adjustable settings so you can customize your shower experience any way you want. Get ready for an out-of-this-world experience with the Galaxy Shower Head!",
+        detailed_description: "This powerful stone-cutting laser is designed to provide superior cutting power and accuracy. Our advanced laser technology allows for precise cuts on all types of stones, from granite and marble to quartz and slate. The laser is equipped with a high-grade focusing lens that delivers a perfectly focused beam, allowing for accurate cuts up to 0.5mm in thickness. The easy-to-use control panel allows you to select the desired cutting speed and intensity for your project. Built with safety in mind, it includes an emergency stop button in case of any unexpected issues during operation. With its durable construction and reliable performance, this stone-cutting laser is the perfect tool for any professional or DIYer looking for precision and efficiency when cutting stone materials.",
         stock: 6,
         image_url:
           "https://res.cloudinary.com/dpve8rfei/image/upload/v1669991014/cutting_laser_xjh2bv.png",
