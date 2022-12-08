@@ -79,17 +79,7 @@ async function createInitialProducts() {
         price: 11999,
         category: "accessories"
       },
-      {
-        name: "Super cool space car",
-        description: "Fly in style",
-        detailed_description: "This super cool space car is the perfect way to stand out from the crowd. It features a sleek and modern design that will make a bold statement wherever you go. The car is powered by an electric engine that produces zero emissions, making it eco-friendly and perfect for long trips. It has an advanced navigation system with real-time traffic updates so you can avoid any delays in your journey. Its interior is spacious and comfortable, featuring heated seats and air conditioning that ensures everyone inside stays comfortable during their travels. With its powerful engine, stylish design and advanced technology, this super cool space car is sure to make any trip exciting!",
-        stock: 5,
-        image_url:
-          "https://res.cloudinary.com/dpve8rfei/image/upload/v1669085856/sportscar_y6ctry.png",
-        price: 39999,
-        category: "transportation"
-
-      },
+     
       {
         name: "Galactic Shower",
         description: "Find Your Zen",
@@ -214,7 +204,7 @@ async function createInitialProducts() {
 
       },
       {
-        name: "Actual Universal Remote",
+        name: "Universal Remote",
         description: "It can control physics",
         detailed_description: "Our revolutionary remote control changes the laws of gravity with just a click of a button! With its intuitive design, controlling gravity has never been easier. Simply point the remote at any object and press the up or down buttons to change its gravitational pull. The range is adjustable up to 10 meters, so you can lift objects up to 10 meters away! Whether it's for fun, practical purposes or even scientific experiments, our remote control will take your creativity to new heights – literally! Plus, it runs on batteries so you don't have to worry about plugging it in. Get yours today and start exploring the possibilities of gravity!",
         stock: 6,
