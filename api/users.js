@@ -168,6 +168,7 @@ usersRouter.get("/orderHistory", requireUser, async (req, res, next) => {
   const carts = await getInactiveCartsByUserId(req.user.id);
   console.log(req.user.id, "user ID")
   console.log(carts, "line 166");
+  
 
 // const mappedCartItems =  await Promise.all(
 //   carts.map(async (cart) => getCartItemsByCart(cart.id)))
@@ -178,19 +179,35 @@ usersRouter.get("/orderHistory", requireUser, async (req, res, next) => {
 //example in fitness tracker
 
   try {
-
     
-const mappedCartItems =  await Promise.all(
+    const carts = await getInactiveCartsByUserId(req.user.id);
+    if (carts){
+    const mappedCartItems =  await Promise.all(
   carts.map(async (cart) => getCartItemsByCart(cart.id)))
-  console.log(mappedCartItems, "line 181 mapped Cart items")
-    const cartItemsList = (await getCartItemsByCart(carts)).map(
-      (cartItem) => cartItem
-    );
+  console.log(mappedCartItems, "line 185 mapped Cart items, order history API")
+    // const cartItemsList = (await getCartItemsByCart(carts)).map(
+    //   (cartItem) => cartItem
+    // );
+    let placeholder = []
+if(mappedCartItems) {
 
-    console.log(cartItemsList, "A LIST OF CART ITEMS MILORD");
+ console.log(mappedCartItems[0], "spread operator?")
 
-    if (req.user) {
-      res.send(mappedCartItems);
+
+ for (let i = 0 ; i < mappedCartItems.length ; i++) {
+ 
+placeholder.push(mappedCartItems[i])
+console.log(placeholder, "this is da placeholder")
+ }
+ 
+//  const concatted = mappedCartItems[0].concat(mappedCartItems[1])
+ if (req.user) {
+   res.send(placeholder);
+   
+  }
+   ;} 
+   else {next({error:"no order history", name: "nothing to list", message: "Checkout to see order history." })}
+    
     }
   } catch ({ name, message }) {
     next({ name, message });

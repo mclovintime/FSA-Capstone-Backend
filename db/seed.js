@@ -272,20 +272,6 @@ async function createInitialCarts() {
       userId: 1,
       isActive: false,
     },
-  
-    {
-      userId: 2,
-      isActive: false,
-    },
- 
-    {
-      userId: 3,
-      isActive: false,
-    },
-    {
-      userId: 4,
-      isActive: false,
-    },
   ];
 
   const carts = await Promise.all(
@@ -336,6 +322,33 @@ async function createInitialCartItems() {
       price: 29999,
       quantity: 1,
     },
+
+    {
+      cartId: 5,
+      productId: 3,
+      price: 29999,
+      quantity: 1,
+    },
+    {
+      cartId: 5,
+      productId: 2,
+      price: 39999,
+      quantity: 1,
+    },
+
+    {
+      cartId: 6,
+      productId: 3,
+      price: 29999,
+      quantity: 1,
+    },
+    {
+      cartId: 6,
+      productId: 2,
+      price: 39999,
+      quantity: 1,
+    },
+
   ];
 
   const cartItems = await Promise.all(
@@ -428,7 +441,7 @@ async function rebuildDB() {
     await createTables();
     await createInitialUsers();
     await createInitialProducts();
-    // await createInitialCarts();
+    await createInitialCarts();
     await createInitialCartItems();
 
     // await getCartByUser(1);

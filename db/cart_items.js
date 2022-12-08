@@ -46,7 +46,7 @@ async function getCartItemsByCart(id) {
     WHERE "cartId"= $1;
     `, [id])
   
-    
+    console.log(cartItems, "getCartItemsByCart, cart_items.js in DB")
     return cartItems
     
   }
