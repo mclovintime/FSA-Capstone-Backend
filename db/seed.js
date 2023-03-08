@@ -439,7 +439,6 @@ async function rebuildDB() {
     // await getCartItemsByCart(1);
   
     console.log("Testing Get Cart Items by Cart")
-    console.log("Testing Get Cart Items by Cart")
 
   
 
