@@ -434,9 +434,9 @@ async function rebuildDB() {
     await createInitialCarts();
     await createInitialCartItems();
 
-    await getCartByUser(1);
-    console.log("Testing Get Cart Items by Cart")
-    await getCartItemsByCart(1);
+    // await getCartByUser(1);
+    // console.log("Testing Get Cart Items by Cart")
+    // await getCartItemsByCart(1);
   
     console.log("Testing Get Cart Items by Cart")
   
