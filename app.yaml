@@ -1,0 +1,7 @@
+runtime: nodejs16
+env_variables:
+  DATABASE_URL: postgresql://postgres:codemy8gcs@35.184.156.48/capstone
+service: backend
+manual_scaling:
+  instances: 1
+
