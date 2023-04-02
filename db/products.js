@@ -6,9 +6,7 @@ async function getAllProducts() {
           SELECT *
           FROM products;
         `);
-    // const products = await Promise.all(
-    //   productIds.map((product) => getProductById(product.id))
-    // );
+
     console.log(rows);
     return rows;
   } catch (error) {
@@ -17,10 +15,9 @@ async function getAllProducts() {
 }
 
 async function getProductById(productId) {
-    console.log(productId, "HOWDY")
+  console.log(productId, "HOWDY");
   const {
     rows: [product],
-    
   } = await client.query(
     `
             SELECT *
@@ -28,7 +25,8 @@ async function getProductById(productId) {
             WHERE id=$1;
           `,
     [productId]
-  ); console.log(product, "HOWDY 2")
+  );
+  console.log(product);
   if (!product) {
     console.log("No Product found");
   } else {
@@ -36,7 +34,15 @@ async function getProductById(productId) {
   }
 }
 
-async function createProduct({ name, description, detailed_description, stock, image_url, price, category }) {
+async function createProduct({
+  name,
+  description,
+  detailed_description,
+  stock,
+  image_url,
+  price,
+  category,
+}) {
   const {
     rows: [products],
   } = await client.query(
@@ -71,7 +77,15 @@ async function getProductByName(name) {
 }
 
 async function updateProduct({ id, ...fields }) {
-  const { name, description, detailed_description, stock, image_url, price, category } = fields;
+  const {
+    name,
+    description,
+    detailed_description,
+    stock,
+    image_url,
+    price,
+    category,
+  } = fields;
 
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
@@ -116,22 +130,21 @@ async function destroyProduct(id) {
 }
 
 async function getProductByCategory(category) {
-const {
-  rows: [product],
-  
-} = await client.query(
-  `
+  const {
+    rows: [product],
+  } = await client.query(
+    `
           SELECT *
           FROM products
           WHERE category=$1;
         `,
-  [category]
-); 
-if (!product) {
-  console.log("No Product found");
-} else {
-  return product;
-}
+    [category]
+  );
+  if (!product) {
+    console.log("No Product found");
+  } else {
+    return product;
+  }
 }
 
 module.exports = {
@@ -141,5 +154,5 @@ module.exports = {
   updateProduct,
   getProductByName,
   destroyProduct,
-  getProductByCategory
+  getProductByCategory,
 };

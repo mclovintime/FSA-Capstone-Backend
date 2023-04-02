@@ -21,7 +21,7 @@ const {
   getUserByUsername,
   createUser,
   getUserById,
-  updateUser
+  updateUser,
 } = require("../db/users");
 const { requireUser } = require("./utils");
 
@@ -85,16 +85,16 @@ usersRouter.post("/register", async (req, res, next) => {
       });
     }
     // else {
-const is_admin = false
+    const is_admin = false;
     const newUser = await createUser({
       username,
       password,
       is_admin,
       email,
-      address
+      address,
     });
 
-    console.log (newUser, "line 97 user API")
+    console.log(newUser);
 
     const token = jwt.sign(newUser, process.env.JWT_SECRET, {
       expiresIn: "24h",
@@ -104,11 +104,6 @@ const is_admin = false
       token,
       user: newUser,
     });
-    // }
-    // let userId = await getIdByUsername(username);
-    // console.log(userId.id, "line 109, register API, userID")
-    // let isActive = true;
-    // createCart(userId.id, isActive);
   } catch ({ name, message }) {
     next({ name, message });
   }
@@ -133,10 +128,8 @@ usersRouter.get("/me", async (req, res, next) => {
 
 usersRouter.get("/mycart", requireUser, async (req, res, next) => {
   const userId = req.user.id;
-  console.log(req.user.id, "REQ,USER ID");
   try {
     const userCart = await getActiveCartByUserId(userId);
-    console.log(userCart, "USER CART");
     if (req.user) {
       res.send(userCart);
     }
@@ -148,13 +141,10 @@ usersRouter.get("/mycart", requireUser, async (req, res, next) => {
 usersRouter.get("/mycart/cart_items", requireUser, async (req, res, next) => {
   const cart = await getActiveCartByUserId(req.user.id);
 
-  console.log(cart);
   try {
     const cartItemsList = (await getCartItemsByCart(cart)).map(
       (cartItem) => cartItem
     );
-
-    console.log(cartItemsList, "A LIST OF CART ITEMS MILORD");
 
     if (req.user) {
       res.send(cartItemsList);
@@ -166,48 +156,29 @@ usersRouter.get("/mycart/cart_items", requireUser, async (req, res, next) => {
 
 usersRouter.get("/orderHistory", requireUser, async (req, res, next) => {
   const carts = await getInactiveCartsByUserId(req.user.id);
-  console.log(req.user.id, "user ID")
-  console.log(carts, "line 166");
-  
-
-// const mappedCartItems =  await Promise.all(
-//   carts.map(async (cart) => getCartItemsByCart(cart.id)))
-//   console.log(mappedCartItems)
-
-//map over carts, in the function call getCartItemsByCart(cart.id)
-//wrap that in promise.all which will await all of the promises
-//example in fitness tracker
-
   try {
-    
     const carts = await getInactiveCartsByUserId(req.user.id);
-    if (carts){
-    const mappedCartItems =  await Promise.all(
-  carts.map(async (cart) => getCartItemsByCart(cart.id)))
-  console.log(mappedCartItems, "line 185 mapped Cart items, order history API")
-    // const cartItemsList = (await getCartItemsByCart(carts)).map(
-    //   (cartItem) => cartItem
-    // );
-    let placeholder = []
-if(mappedCartItems) {
+    if (carts) {
+      const mappedCartItems = await Promise.all(
+        carts.map(async (cart) => getCartItemsByCart(cart.id))
+      );
 
- console.log(mappedCartItems[0], "spread operator?")
+      let placeholder = [];
+      if (mappedCartItems) {
+        for (let i = 0; i < mappedCartItems.length; i++) {
+          placeholder.push(mappedCartItems[i]);
+        }
 
-
- for (let i = 0 ; i < mappedCartItems.length ; i++) {
- 
-placeholder.push(mappedCartItems[i])
-console.log(placeholder, "this is da placeholder")
- }
- 
-//  const concatted = mappedCartItems[0].concat(mappedCartItems[1])
- if (req.user) {
-   res.send(placeholder);
-   
-  }
-   ;} 
-   else {next({error:"no order history", name: "nothing to list", message: "Checkout to see order history." })}
-    
+        if (req.user) {
+          res.send(placeholder);
+        }
+      } else {
+        next({
+          error: "no order history",
+          name: "nothing to list",
+          message: "Checkout to see order history.",
+        });
+      }
     }
   } catch ({ name, message }) {
     next({ name, message });
@@ -221,13 +192,10 @@ usersRouter.post(
   async (req, res, next) => {
     try {
       const cartId = await getActiveCartByUserId(req.user.id);
-      console.log(cartId, "result of getActiveCart");
       const originalCart = await getCartById(cartId);
 
       if (originalCart) {
         {
-          console.log(req.body, "REQ.BODY");
-
           const { productId, price, quantity } = req.body;
 
           const updatedCartItems = await addProductToCartItems({
@@ -236,11 +204,14 @@ usersRouter.post(
             price,
             quantity,
           });
-          if(updatedCartItems){
-            res.send(updatedCartItems)
-          }
-          else{
-            next({error: "Already in cart", name:"ProductNotAdded", message:"Product already in cart."})
+          if (updatedCartItems) {
+            res.send(updatedCartItems);
+          } else {
+            next({
+              error: "Already in cart",
+              name: "ProductNotAdded",
+              message: "Product already in cart.",
+            });
           }
         }
       }
@@ -260,11 +231,19 @@ usersRouter.patch("/mycart/checkout", requireUser, async (req, res, next) => {
       if (deactivatedCart) {
         await createCart(userId, true);
         const newCartId = await getActiveCartByUserId(userId);
-        res.send({newCartId});
-      } else { next({name: "deactivate cart error", message:"there was an issue deactivating the cart"})}
-    } else {next ({name: "no current cart", message: "could not find current cart."})}
-
-
+        res.send({ newCartId });
+      } else {
+        next({
+          name: "deactivate cart error",
+          message: "there was an issue deactivating the cart",
+        });
+      }
+    } else {
+      next({
+        name: "no current cart",
+        message: "could not find current cart.",
+      });
+    }
   } catch ({ name, message }) {
     next({ name, message });
   }
@@ -276,15 +255,15 @@ usersRouter.delete(
   async (req, res, next) => {
     try {
       const cartItem = await getCartItemById(req.params.cartItemId);
-      console.log(cartItem, "THIS IS CART ITEM DELETE");
       const deleted = await destroyCartItem(cartItem.id);
-      if(deleted){
-      res.send({success: true, deleted})
-    }
-      else{
-        next({error: "DELETE FAILED", 
-        name:"FAILEDTODELETE",
-        message:"Could not delete item from cart."})
+      if (deleted) {
+        res.send({ success: true, deleted });
+      } else {
+        next({
+          error: "DELETE FAILED",
+          name: "FAILEDTODELETE",
+          message: "Could not delete item from cart.",
+        });
       }
     } catch ({ name, message }) {
       next({ name, message });
@@ -292,38 +271,36 @@ usersRouter.delete(
   }
 );
 
-  usersRouter.patch("/me/:userId", requireUser, async (req, res, next) => {
-    const { userId } = req.params;
-    const fields = req.body;
-    console.log(fields)
-    if (req.body) {
-      try {
-        const originalUser = await getUserById(userId);
-    
-  
-        if (originalUser) {
-          const updatedUser = await updateUser({
-            id: userId,
-            ...fields,
-          });
-          res.send(updatedUser);
-        } else {
-          next({
-            name: "user does not exist",
-            message: `user ${userId} not found`,
-            error: "error",
-          });
-        }
-      } catch ({ name, message, error }) {
-        next({ name, message, error });
+usersRouter.patch("/me/:userId", requireUser, async (req, res, next) => {
+  const { userId } = req.params;
+  const fields = req.body;
+  if (req.body) {
+    try {
+      const originalUser = await getUserById(userId);
+
+      if (originalUser) {
+        const updatedUser = await updateUser({
+          id: userId,
+          ...fields,
+        });
+        res.send(updatedUser);
+      } else {
+        next({
+          name: "user does not exist",
+          message: `user ${userId} not found`,
+          error: "error",
+        });
       }
-    } else {
-      next({
-        name: "There is no req.body",
-        message: "We need a body",
-        error: "error",
-      });
+    } catch ({ name, message, error }) {
+      next({ name, message, error });
     }
-  });
+  } else {
+    next({
+      name: "There is no req.body",
+      message: "We need a body",
+      error: "error",
+    });
+  }
+});
 
 module.exports = usersRouter;
