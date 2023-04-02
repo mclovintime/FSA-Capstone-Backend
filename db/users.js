@@ -29,14 +29,11 @@ async function createUser({ username, password, is_admin, email, address }) {
       [username, bcryptPassword, is_admin, email, address]
     );
 
- console.log(user.id,"????????????????? line 32")
-  const id = user.id
-  const cart = await createCart(id, true)
-  console.log(cart, "!!!!!!!!!!!!!!!!! line 35")
- 
-  
-   
-   
+    console.log(user.id);
+    const id = user.id;
+    const cart = await createCart(id, true);
+    console.log(cart);
+
     delete user.password;
     return user;
   } catch (error) {
@@ -57,7 +54,6 @@ async function getUser({ username, password }) {
     throw error;
   }
 }
-
 
 async function getUserById(userId) {
   try {
@@ -128,34 +124,32 @@ async function getUserByEmail(email) {
   }
 }
 
-async function updateUser( { id, ...fields }) {
-
+async function updateUser({ id, ...fields }) {
   const setString = Object.keys(fields)
     .map((key, index) => `"${key}"=$${index + 1}`)
     .join(", ");
 
-    if (setString.length === 0) {
-      return;
-    }
-    try {
-      const {
-        rows: [user],
-      }= await client.query(
+  if (setString.length === 0) {
+    return;
+  }
+  try {
+    const {
+      rows: [user],
+    } = await client.query(
       `
           UPDATE users
           SET ${setString}
           WHERE id=${id}
           RETURNING *;
         `,
-        Object.values(fields)
+      Object.values(fields)
     );
     return user;
-     } catch (error) {
-      console.error(error)
+  } catch (error) {
+    console.error(error);
     throw error;
   }
 }
-
 
 module.exports = {
   getAllUsers,
@@ -164,5 +158,5 @@ module.exports = {
   getUserByUsername,
   getUser,
   getIdByUsername,
-  updateUser
+  updateUser,
 };
