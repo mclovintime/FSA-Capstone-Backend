@@ -15,7 +15,6 @@ async function getAllProducts() {
 }
 
 async function getProductById(productId) {
-  console.log(productId, "HOWDY");
   const {
     rows: [product],
   } = await client.query(
@@ -26,7 +25,6 @@ async function getProductById(productId) {
           `,
     [productId]
   );
-  console.log(product);
   if (!product) {
     console.log("No Product found");
   } else {
