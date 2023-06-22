@@ -11,7 +11,7 @@ const {
   getCartByUser,
   getCartItemsByCart,
 } = require("./index");
-const client = require("./client");
+const {client} = require("./client");
 
 async function createInitialUsers() {
   try {
