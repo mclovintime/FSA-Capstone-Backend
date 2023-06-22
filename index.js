@@ -4,7 +4,8 @@ const stripe = require('stripe')('sk_test_51M6yNAChZbepu0tegirpoYXAh8qTu81xCEJQJ
 const uuid = require('uuid')
 
 // const PORT = 3000;
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
+const{PORT=8080}=process.env
 
 const express = require('express');
 const server = express();
